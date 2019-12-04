@@ -1,5 +1,4 @@
 "use strict";
-alert("hello");
 
 const e = React.createElement;
 
