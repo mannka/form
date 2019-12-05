@@ -13,10 +13,14 @@ class LikeButton extends React.Component {
       return "You liked this.";
     }
 
-    return e(
-      "button",
-      { onClick: () => this.setState({ liked: true }) },
-      "Like"
+    return React.createElement(
+      "form",
+      null,
+      React.createElement("input", {
+        type: "text",
+        name: "Company",
+        placeholder: "legal name of organization"
+      })
     );
   }
 }
