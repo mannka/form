@@ -1,11 +1,8 @@
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { liked: false };
-  }
+  state = { name: "Hello World" };
 
   render() {
-    return <h1>Hello</h1>;
+    return <h1>{this.state.name}</h1>;
   }
 }
 
