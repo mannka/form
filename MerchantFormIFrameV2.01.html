@@ -1,0 +1,116 @@
+<form action="https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=2e3f5943eb03637789bd3282b03fdfa0?scope=creatorapi" method="post">
+  <fieldset><legend>Business / Organization</legend>
+  <input type="text" name="Company" placeholder="Legal name of organization" size="40" maxlength="100" required />
+  <br>
+  Registered Address<br>
+  <input type="text" name="AddressLine1" placeholder="Address line 1" required />
+  <br>
+  <input type="text" name="AddressLine2" placeholder="Address line 2" />
+  <br>
+  <input type="text" name="City" placeholder="City" required />
+  <select name="State" required>
+      <option value="" selected="selected">State</option>
+	  <option>Alabama</option>
+	  <option>Alaska</option>
+	  <option>Arizona</option>
+	  <option>Arkansas</option>
+	  <option>California</option>
+	  <option>Colorado</option>
+	  <option>Connecticut</option>
+	  <option>Delaware</option>
+	  <option>District Of Columbia</option>
+	  <option>Florida</option>
+	  <option>Georgia</option>
+	  <option>Hawaii</option>
+	  <option>Idaho</option>
+	  <option>Illinois</option>
+	  <option>Indiana</option>
+	  <option>Iowa</option>
+	  <option>Kansas</option>
+	  <option>Kentucky</option>
+	  <option>Louisiana</option>
+	  <option>Maine</option>
+	  <option>Maryland</option>
+	  <option>Massachusetts</option>
+	  <option>Michigan</option>
+	  <option>Minnesota</option>
+	  <option>Mississippi</option>
+	  <option>Missouri</option>
+	  <option>Montana</option>
+	  <option>Nebraska</option>
+	  <option>Nevada</option>
+	  <option>New Hampshire</option>
+	  <option>New Jersey</option>
+	  <option>New Mexico</option>
+	  <option>New York</option>
+	  <option>North Carolina</option>
+	  <option>North Dakota</option>
+	  <option>Ohio</option>
+	  <option>Oklahoma</option>
+	  <option>Oregon</option>
+	  <option>Pennsylvania</option>
+	  <option>Rhode Island</option>
+	  <option>South Carolina</option>
+	  <option>South Dakota</option>
+	  <option>Tennessee</option>
+	  <option>Texas</option>
+	  <option>Utah</option>
+	  <option>Vermont</option>
+	  <option>Virginia</option>
+	  <option>Washington</option>
+	  <option>West Virginia</option>
+	  <option>Wisconsin</option>
+	  <option>Wyoming</option>
+  </select>
+  <input type="text" name="ZipCode" placeholder="Zipcode" required />
+  <br>
+  Tax ID<input type="text" name="TaxIDNumber" placeholder="123456789" />
+  <br>
+  Merchant ID<input type="text" name="MerchantID" />
+  <br>
+  Merchant ID Issued By<input type="text" name="MerchantIDIssuer" />
+  <br>
+  Has your organization used multiple Merchant ID numbers from 2004-2019?
+  <select name="MoreMIDs" required>
+      <option value="" selected="selected">Choose...</option>
+	  <option>Yes</option>
+	  <option>No</option>
+  </select>
+  <br>
+  Brownstone will send details via email on how to provide this information for your claim.
+  </fieldset>
+  <fieldset><legend>Authorized Individual for this Organization</legend>
+  <input type="text" name="FirstName" placeholder="First name" required />
+  <input type="text" name="LastName"  placeholder="Last name" required />
+  <br>
+  <input type="text" name="Title" placeholder="Title" />
+  Reliable phone number
+  <input type="tel" name="WorkPhone" placeholder="###-###-####" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" />
+  <br>
+  <input type="email" name="Email" placeholder="Email address" title="We will use this address to communicate with you about the settlement." required />
+  <input type="email" name="Email2" placeholder="Verify email address" required /><br>
+  <font>Brownstone will rely on this email address to communicate with you as we work your claim</font><br><br>
+  <input type="email" name="SecondaryEmail" placeholder="Secondary email" />
+  <input type="email" name="SecondaryEmail2" placeholder="Verify secondary email" /><br>
+  <font>If provided, Brownstone will email updates to this address in addition to the email of the Authorized Individual</font><br>
+
+  </fieldset>
+  <fieldset><legend>Service Agreement</legend>
+  <input type="text" name="ReferralCode" placeholder="Referral Code" />
+  <br>
+  <textarea name="ServiceAgreementText" rows="6" cols="60" readonly>
+  Text will be replaced with actual agreement.  Lorem ipsum dolor sit amet consectetur adipiscing elit commodo sed accumsan proin quis praesent, eleifend ante ultrices congue mattis aptent lacus scelerisque aenean vivamus augue feugiat. Arcu tempus facilisis enim tempor habitasse ullamcorper sollicitudin sapien class montes lacinia pellentesque, ac litora orci consequat sodales elementum mauris velit urna volutpat eleifend aptent, ad vestibulum sagittis imperdiet fusce id vel gravida convallis nibh dictum. Arcu eleifend torquent natoque egestas fringilla purus commodo netus, semper enim sem euismod eget gravida malesuada, placerat cras ad class faucibus penatibus lacinia.
+  Venenatis imperdiet habitant facilisis ac sem erat id pellentesque vehicula, velit scelerisque mauris mollis ultrices aliquam sociosqu purus, orci aenean nam molestie turpis eget iaculis at. Luctus eu torquent dictum primis a vulputate proin interdum pulvinar, nostra ultricies integer et vel tortor rutrum dignissim augue, sollicitudin tempor scelerisque nam sed neque quam arcu. Mattis gravida vitae hac commodo pulvinar ac metus, curabitur nec convallis pharetra inceptos dui ridiculus mauris, orci risus lacus nulla praesent curae.
+  </textarea><br>
+  <input type="radio" name="ServiceAgreement" value="ReadAndAgree" required>I have read and agree to the Service Agreement<br>
+  <input type="radio" name="ServiceAgreement" value="WillSignLater" required>I will sign the Service Agreement later (we will send you a link via email)<br>
+  <input type="text" name="Signature" placeholder="Signature" />
+  </fieldset>
+  <input type="hidden" name="Fee" value="30.0" />
+  <input type="hidden" name="LeadSource" />
+  <input type="hidden" name="AgentEmail" />
+  <input type="hidden" name="ISOName" />
+  <input type="hidden" name="ISOEmail" />
+  <br><br>
+  <input type="submit" value="Sign Me Up!" />
+</form> 
