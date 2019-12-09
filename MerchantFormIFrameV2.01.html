@@ -1,10 +1,4 @@
 <style>
-  form,
-  fieldset,
-  input,
-  label {
-    display: block;
-  }
   /* setup tooltips */
   .tooltip {
     position: relative;
@@ -60,129 +54,215 @@
     text-align: center;
     line-height: 20px;
   }
+
+  .form-flex,
+  form p {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flex-row {
+    flex-direction: row;
+  }
+
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  .flex-space-between {
+    justify-content: space-between;
+  }
+
+  .MerchantID p {
+    width: 45%;
+  }
 </style>
 
 <form
+  class="form-flex"
   action="https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=2e3f5943eb03637789bd3282b03fdfa0?scope=creatorapi"
   method="post"
 >
-  <fieldset>
-    <legend>Business / Organization</legend>
-    <input
-      type="text"
-      name="Company"
-      placeholder="Legal name of organization"
-      size="40"
-      maxlength="100"
-      required
-    />
+  <fieldset class="form-set">
+    <legend class="form-set-legend">Business / Organization</legend>
 
-    Registered Address
-    <input
-      type="text"
-      name="AddressLine1"
-      placeholder="Address line 1"
-      required
-    />
+    <p>
+      <label for="Company">Organization name</label>
+      <input
+        type="text"
+        name="Company"
+        placeholder="Legal name of organization"
+        size="40"
+        maxlength="100"
+        class="input-field"
+        required
+      />
+    </p>
 
-    <input type="text" name="AddressLine2" placeholder="Address line 2" />
-    <input type="text" name="City" placeholder="City" required />
-    <select name="State" required>
-      <option value="" selected="selected">State</option>
-      <option>Alabama</option>
-      <option>Alaska</option>
-      <option>Arizona</option>
-      <option>Arkansas</option>
-      <option>California</option>
-      <option>Colorado</option>
-      <option>Connecticut</option>
-      <option>Delaware</option>
-      <option>District Of Columbia</option>
-      <option>Florida</option>
-      <option>Georgia</option>
-      <option>Hawaii</option>
-      <option>Idaho</option>
-      <option>Illinois</option>
-      <option>Indiana</option>
-      <option>Iowa</option>
-      <option>Kansas</option>
-      <option>Kentucky</option>
-      <option>Louisiana</option>
-      <option>Maine</option>
-      <option>Maryland</option>
-      <option>Massachusetts</option>
-      <option>Michigan</option>
-      <option>Minnesota</option>
-      <option>Mississippi</option>
-      <option>Missouri</option>
-      <option>Montana</option>
-      <option>Nebraska</option>
-      <option>Nevada</option>
-      <option>New Hampshire</option>
-      <option>New Jersey</option>
-      <option>New Mexico</option>
-      <option>New York</option>
-      <option>North Carolina</option>
-      <option>North Dakota</option>
-      <option>Ohio</option>
-      <option>Oklahoma</option>
-      <option>Oregon</option>
-      <option>Pennsylvania</option>
-      <option>Rhode Island</option>
-      <option>South Carolina</option>
-      <option>South Dakota</option>
-      <option>Tennessee</option>
-      <option>Texas</option>
-      <option>Utah</option>
-      <option>Vermont</option>
-      <option>Virginia</option>
-      <option>Washington</option>
-      <option>West Virginia</option>
-      <option>Wisconsin</option>
-      <option>Wyoming</option>
-    </select>
-    <input type="text" name="ZipCode" placeholder="Zipcode" required />
+    <p>
+      <label for="AddressLine1">Registered address</label>
+      <input
+        type="text"
+        name="AddressLine1"
+        placeholder="Address line 1"
+        class="input-field"
+        required
+      />
 
-    <label for="TaxIDNumber">Tax ID</label>
-    <span class="tooltip fade dot" data-title="Hypertext Markup Language"
-      >?</span
-    >
-    <input type="text" name="TaxIDNumber" placeholder="123456789" />
+      <input
+        type="text"
+        name="AddressLine2"
+        placeholder="Address line 2"
+        class="input-field"
+      />
 
-    <label for="MerchandID">Merchant ID</label>
-    <input type="text" name="MerchantID" />
+      <span class="address-group">
+        <input
+          type="text"
+          name="City"
+          placeholder="City"
+          class="input-field"
+          required
+        />
+        <select name="State" class="select-field" required>
+          <option value="" selected="selected">State</option>
+          <option>Alabama</option>
+          <option>Alaska</option>
+          <option>Arizona</option>
+          <option>Arkansas</option>
+          <option>California</option>
+          <option>Colorado</option>
+          <option>Connecticut</option>
+          <option>Delaware</option>
+          <option>District Of Columbia</option>
+          <option>Florida</option>
+          <option>Georgia</option>
+          <option>Hawaii</option>
+          <option>Idaho</option>
+          <option>Illinois</option>
+          <option>Indiana</option>
+          <option>Iowa</option>
+          <option>Kansas</option>
+          <option>Kentucky</option>
+          <option>Louisiana</option>
+          <option>Maine</option>
+          <option>Maryland</option>
+          <option>Massachusetts</option>
+          <option>Michigan</option>
+          <option>Minnesota</option>
+          <option>Mississippi</option>
+          <option>Missouri</option>
+          <option>Montana</option>
+          <option>Nebraska</option>
+          <option>Nevada</option>
+          <option>New Hampshire</option>
+          <option>New Jersey</option>
+          <option>New Mexico</option>
+          <option>New York</option>
+          <option>North Carolina</option>
+          <option>North Dakota</option>
+          <option>Ohio</option>
+          <option>Oklahoma</option>
+          <option>Oregon</option>
+          <option>Pennsylvania</option>
+          <option>Rhode Island</option>
+          <option>South Carolina</option>
+          <option>South Dakota</option>
+          <option>Tennessee</option>
+          <option>Texas</option>
+          <option>Utah</option>
+          <option>Vermont</option>
+          <option>Virginia</option>
+          <option>Washington</option>
+          <option>West Virginia</option>
+          <option>Wisconsin</option>
+          <option>Wyoming</option>
+        </select>
+        <input
+          type="text"
+          name="ZipCode"
+          placeholder="Zipcode"
+          class="input-field"
+          required
+        />
+      </span>
+    </p>
 
-    Merchant ID Issued By<input type="text" name="MerchantIDIssuer" />
-    <br />
+    <p>
+      <div class="flex-row">
+        <label for="TaxIDNumber" class="form-label">Tax ID</label>
+        <i class="tooltip fade dot" data-title="Hypertext Markup Language"
+          >?</i>
+      </div>
+      <input
+        type="text"
+        name="TaxIDNumber"
+        placeholder="123456789"
+        class="input-field"
+      />
+    </p>
+
+    <div class="MerchandID flex-row">
+      <p>
+        <label for="MerchandID" class="form-label">Merchant ID</label>
+        <input type="text" name="MerchantID" class="input-field" />
+      </p>
+  
+      <p>
+        <label for="MerchantIDIssuer" class="form-label"
+          >Merchant ID Issued By</label
+        >
+        <input type="text" name="MerchantIDIssuer" class="input-field" />
+      </p>
+    </div>
+
     Has your organization used multiple Merchant ID numbers from 2004-2019?
-    <select name="MoreMIDs" required>
+    <select name="MoreMIDs" class="select-field" required>
       <option value="" selected="selected">Choose...</option>
       <option>Yes</option>
       <option>No</option>
     </select>
-    <br />
+
     Brownstone will send details via email on how to provide this information
     for your claim.
   </fieldset>
-  <fieldset>
-    <legend>Authorized Individual for this Organization</legend>
-    <input type="text" name="FirstName" placeholder="First name" required />
-    <input type="text" name="LastName" placeholder="Last name" required />
-    <br />
-    <input type="text" name="Title" placeholder="Title" />
+
+  <fieldset class="form-set">
+    <legend class="form-set-legend">
+      Authorized Individual for this Organization
+    </legend>
+    <input
+      type="text"
+      name="FirstName"
+      placeholder="First name"
+      class="input-field"
+      required
+    />
+    <input
+      type="text"
+      name="LastName"
+      placeholder="Last name"
+      class="input-field"
+      required
+    />
+
+    <input type="text" name="Title" placeholder="Title" class="input-field" />
+
     Reliable phone number
     <input
       type="tel"
       name="WorkPhone"
       placeholder="###-###-####"
       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+      class="input-field"
     />
-    <br />
+
     <input
       type="email"
       name="Email"
       placeholder="Email address"
       title="We will use this address to communicate with you about the settlement."
+      class="input-field"
       required
     />
     <input
