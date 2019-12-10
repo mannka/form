@@ -1,3 +1,5 @@
+<!-- <link rel="stylesheet" href="./form.css" /> -->
+
 <form
   class="form-flex"
   action="https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=2e3f5943eb03637789bd3282b03fdfa0?scope=creatorapi"
@@ -7,7 +9,6 @@
   <fieldset class="form-set">
     <legend class="form-set-legend">Business / Organization</legend>
 
-    <label for="Company" class="form-label">Organization name</label>
     <input
       type="text"
       name="Company"
@@ -18,7 +19,7 @@
       required
     />
 
-    <label for="AddressLine1" class="form-label">Registered address</label>
+    <label class="form-label">Registered address</label>
     <input
       type="text"
       name="AddressLine1"
@@ -34,16 +35,16 @@
       class="input-field"
     />
 
-    <div class="address-group flex-wrap flex-row">
+    <div class="group flex-wrap flex-row">
       <input
         type="text"
         name="City"
         placeholder="City"
-        class="input-field"
+        class="input-field one-third"
         required
       />
 
-      <select name="State" class="select-field" required>
+      <select name="State" class="select-field one-third" required>
         <option value="" selected="selected">State</option>
         <option>Alabama</option>
         <option>Alaska</option>
@@ -102,33 +103,35 @@
         type="text"
         name="ZipCode"
         placeholder="Zipcode"
-        class="input-field"
+        class="input-field one-third"
         required
       />
     </div>
 
-    <span class="flex-row">
-      <label for="TaxIDNumber" class="form-label">Tax ID</label>
-      <span
-        class="tooltip fade dot"
-        data-title="orem ipsum dolor sit amet consectetur adipiscing \\r\ elit commodo sed accumsan proin "
-        >?</span
-      >
-    </span>
-    <input
-      type="text"
-      name="TaxIDNumber"
-      placeholder="123456789"
-      class="input-field"
-    />
+    <div class="group flex-row flex-wrap">
+      <div class="one-third">
+        <div class="tooltip-label flex-row">
+          <label for="TaxIDNumber" class="form-label">Tax ID</label>
+          <span
+            class="tooltip fade dot"
+            data-title="orem ipsum dolor sit amet consectetur adipiscing \\r\ elit commodo sed accumsan proin "
+            >?</span
+          >
+        </div>
+        <input
+          type="text"
+          name="TaxIDNumber"
+          placeholder="123456789"
+          class="input-field"
+        />
+      </div>
 
-    <div class="merchantID flex-row flex-wrap">
-      <div class="flex-column">
+      <div class="flex-column one-third">
         <label for="MerchandID" class="form-label">Merchant ID</label>
         <input type="text" name="MerchantID" class="input-field" />
       </div>
 
-      <div class="flex-column">
+      <div class="flex-column one-third">
         <label for="MerchantIDIssuer" class="form-label"
           >Merchant ID Issued By</label
         >
@@ -158,69 +161,85 @@
     </legend>
 
     <label class="form-label">Name</label>
-    <div class="flex-row">
-      <input type="text" name="Title" placeholder="Title" class="input-field" />
+    <div class="group flex-row flex-wrap">
       <input
         type="text"
         name="FirstName"
         placeholder="First name"
-        class="input-field"
+        class="input-field half"
         required
       />
+
       <input
         type="text"
         name="LastName"
         placeholder="Last name"
-        class="input-field"
+        class="input-field half"
         required
       />
     </div>
 
-    <label for="WorkPhone">Reliable phone number</label>
-    <input
-      type="tel"
-      name="WorkPhone"
-      placeholder="###-###-####"
-      pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-      class="input-field"
-    />
+    <div class="group flex-row flex-wrap">
+      <div class="half">
+        <label for="Title" class="form-label label-title">Title</label>
+        <input
+          type="text"
+          name="Title"
+          placeholder="Title"
+          class="input-field"
+        />
+      </div>
 
-    <label class="form-label">Email</label>
+      <div class="half">
+        <label for="WorkPhone" class="form-label">Reliable phone number</label>
+        <input
+          type="tel"
+          name="WorkPhone"
+          placeholder="###-###-####"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          class="input-field"
+        />
+      </div>
+    </div>
 
-    <input
-      type="email"
-      name="Email"
-      placeholder="Email address"
-      title="We will use this address to communicate with you about the settlement."
-      class="input-field"
-      required
-    />
-    <input
-      type="email"
-      name="Email2"
-      placeholder="Verify email address"
-      class="input-field"
-      required
-    />
+    <div class="group flex-row flex-wrap">
+      <input
+        type="email"
+        name="Email"
+        placeholder="Email address"
+        title="We will use this address to communicate with you about the settlement."
+        class="input-field half"
+        required
+      />
+      <input
+        type="email"
+        name="Email2"
+        placeholder="Verify email address"
+        class="input-field half"
+        required
+      />
+    </div>
 
     <p>
       Brownstone will rely on this email address to communicate with you as we
       work your claim
     </p>
 
-    <label class="form-label">Secondary email</label>
-    <input
-      type="email"
-      name="SecondaryEmail"
-      placeholder="Secondary email"
-      class="input-field"
-    />
-    <input
-      type="email"
-      name="SecondaryEmail2"
-      placeholder="Verify secondary email"
-      class="input-field"
-    />
+    <div class="group flex-row flex-wrap">
+      <input
+        type="email"
+        name="SecondaryEmail"
+        placeholder="Secondary email"
+        class="input-field half"
+      />
+      <input
+        type="email"
+        name="SecondaryEmail2"
+        placeholder="Verify secondary email"
+        class="input-field half"
+      />
+    </div>
+
     <p>
       If provided, Brownstone will email updates to this address in addition to
       the email of the Authorized Individual
@@ -230,7 +249,12 @@
 
   <fieldset>
     <legend for="ReferralCode">Service Agreement</legend>
-    <input type="text" name="ReferralCode" placeholder="Referral Code" />
+    <input
+      type="text"
+      name="ReferralCode"
+      placeholder="Referral Code"
+      class="input-field"
+    />
     <textarea
       name="ServiceAgreementText"
       rows="6"
@@ -241,23 +265,28 @@
     Text will be replaced with actual agreement.  Lorem ipsum dolor sit amet consectetur adipiscing elit commodo sed accumsan proin quis praesent, eleifend ante ultrices congue mattis aptent lacus scelerisque aenean vivamus augue feugiat. Arcu tempus facilisis enim tempor habitasse ullamcorper sollicitudin sapien class montes lacinia pellentesque, ac litora orci consequat sodales elementum mauris velit urna volutpat eleifend aptent, ad vestibulum sagittis imperdiet fusce id vel gravida convallis nibh dictum. Arcu eleifend torquent natoque egestas fringilla purus commodo netus, semper enim sem euismod eget gravida malesuada, placerat cras ad class faucibus penatibus lacinia.
     Venenatis imperdiet habitant facilisis ac sem erat id pellentesque vehicula, velit scelerisque mauris mollis ultrices aliquam sociosqu purus, orci aenean nam molestie turpis eget iaculis at. Luctus eu torquent dictum primis a vulputate proin interdum pulvinar, nostra ultricies integer et vel tortor rutrum dignissim augue, sollicitudin tempor scelerisque nam sed neque quam arcu. Mattis gravida vitae hac commodo pulvinar ac metus, curabitur nec convallis pharetra inceptos dui ridiculus mauris, orci risus lacus nulla praesent curae.
     </textarea>
-    <div>
+    <div class="flex-row">
       <input
         type="radio"
         name="ServiceAgreement"
         value="ReadAndAgree"
-        class="input-field"
+        class="input-select"
         required
-      />I have read and agree to the Service Agreement
+      />
+      <span>I have read and agree to the Service Agreement</span>
     </div>
-    <div>
+    <div class="flex-row">
       <input
         type="radio"
         name="ServiceAgreement"
         value="WillSignLater"
+        class="input-select"
         required
-      />I will sign the Service Agreement later (we will send you a link via
-      email)
+      />
+      <span>
+        I will sign the Service Agreement later (we will send you a link via
+        email)
+      </span>
     </div>
     <input type="text" name="Signature" placeholder="Signature" />
   </fieldset>
@@ -270,8 +299,4 @@
   <input type="submit" value="Sign Me Up!" />
 </form>
 
-<script
-  src="https://cdn.jsdelivr.net/gh/mannka/form@master/form.js"
-  type="text/javascript"
-  crossorigin
-></script>
+<!-- <script src="./form.js" type="text/javascript" crossorigin></script> -->
