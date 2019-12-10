@@ -1,3 +1,4 @@
 window.onload = () => {
-  document.querySelector('input[name="MerchantID"]').value = "test";
+  alert("hello");
+  // document.querySelector('input[name="MerchantID"]').value = "test";
 };

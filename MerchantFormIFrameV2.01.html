@@ -61,6 +61,8 @@
     flex-direction: column;
   }
 
+
+
   .flex-row {
     flex-direction: row;
   }
@@ -73,12 +75,17 @@
   .flex-space-between {
     justify-content: space-between;
   }
+
+  #brownstone-form label {
+    margin-bottom: 5px;
+  }
 </style>
 
 <form
   class="form-flex"
   action="https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=2e3f5943eb03637789bd3282b03fdfa0?scope=creatorapi"
   method="post"
+  id="brownstone-form"
 >
   <fieldset class="form-set">
     <legend class="form-set-legend">Business / Organization</legend>
@@ -329,4 +336,4 @@
   <input type="submit" value="Sign Me Up!" />
 </form>
 
-<!-- <script src="form.js" crossorigin></script> -->
+<script src="form.js" crossorigin></script>
