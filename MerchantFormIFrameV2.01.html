@@ -61,10 +61,13 @@
     flex-direction: column;
   }
 
-
-
   .flex-row {
     flex-direction: row;
+  }
+
+  .flex-column {
+    display: flex;
+    flex-direction: column;
   }
 
   .flex-wrap {
@@ -76,8 +79,13 @@
     justify-content: space-between;
   }
 
-  #brownstone-form label {
-    margin-bottom: 5px;
+  .form-label,
+  #brownstone-form input {
+    margin-bottom: 8px;
+  }
+
+  #brownstone-form input {
+    margin-right: 8px;
   }
 </style>
 
@@ -90,7 +98,7 @@
   <fieldset class="form-set">
     <legend class="form-set-legend">Business / Organization</legend>
 
-    <label for="Company">Organization name</label>
+    <label for="Company" class="form-label">Organization name</label>
     <input
       type="text"
       name="Company"
@@ -101,7 +109,7 @@
       required
     />
 
-    <label for="AddressLine1">Registered address</label>
+    <label for="AddressLine1" class="form-label">Registered address</label>
     <input
       type="text"
       name="AddressLine1"
@@ -192,7 +200,9 @@
 
     <span class="flex-row">
       <label for="TaxIDNumber" class="form-label">Tax ID</label>
-      <span class="tooltip fade dot" data-title="orem ipsum dolor sit amet consectetur adipiscing elit commodo sed accumsan proin quis praesent, eleifend ante ultrices congue mattis aptent lacus scelerisque aenean vivamus augue feugiat. Arcu tempus facilisis enim tempor habitasse ullamcorper sollicitudin sapien class montes lacinia pellentesque, ac litora orci consequat sodales elementum mauris velit urna volutpat eleifend aptent, ad vestibulum sagittis imperdiet fusce id vel gravida convallis nibh dictum. Arcu eleifend torquent natoque egestas fringilla purus commodo netus, semper enim sem euismod eget gravida malesuada, placerat cras ad class faucibus penatibus lacinia.
+      <span
+        class="tooltip fade dot"
+        data-title="orem ipsum dolor sit amet consectetur adipiscing elit commodo sed accumsan proin quis praesent, eleifend ante ultrices congue mattis aptent lacus scelerisque aenean vivamus augue feugiat. Arcu tempus facilisis enim tempor habitasse ullamcorper sollicitudin sapien class montes lacinia pellentesque, ac litora orci consequat sodales elementum mauris velit urna volutpat eleifend aptent, ad vestibulum sagittis imperdiet fusce id vel gravida convallis nibh dictum. Arcu eleifend torquent natoque egestas fringilla purus commodo netus, semper enim sem euismod eget gravida malesuada, placerat cras ad class faucibus penatibus lacinia.
       Venenatis imperdiet habitant facilisis ac sem erat id pellentesque vehicula, velit scelerisque mauris mollis "
         >?</span
       >
@@ -205,15 +215,15 @@
     />
 
     <div class="merchantID flex-row flex-wrap">
-      <div>
-        <label for="MerchandID" class="form-label">Merchant ID</label></br>
+      <div class="flex-column">
+        <label for="MerchandID" class="form-label">Merchant ID</label>
         <input type="text" name="MerchantID" class="input-field" />
       </div>
 
-      <div>
+      <div class="flex-column">
         <label for="MerchantIDIssuer" class="form-label"
           >Merchant ID Issued By</label
-        ></br>
+        >
         <input type="text" name="MerchantIDIssuer" class="input-field" />
       </div>
     </div>
@@ -238,8 +248,9 @@
     <legend class="form-set-legend">
       Authorized Individual for this Organization
     </legend>
-    <div calss="flex-row flex-wrap">
-      <label>Name</label></br>
+
+    <label class="form-label">Name</label>
+    <div class="flex-row">
       <input type="text" name="Title" placeholder="Title" class="input-field" />
       <input
         type="text"
@@ -266,7 +277,7 @@
       class="input-field"
     />
 
-    <label>Email</label>
+    <label class="form-label">Email</label>
 
     <input
       type="email"
@@ -290,43 +301,57 @@
     </p>
 
     <label class="form-label">Secondary email</label>
-    <input type="email" name="SecondaryEmail" placeholder="Secondary email" class="input-field" />
+    <input
+      type="email"
+      name="SecondaryEmail"
+      placeholder="Secondary email"
+      class="input-field"
+    />
     <input
       type="email"
       name="SecondaryEmail2"
       placeholder="Verify secondary email"
       class="input-field"
     />
-    <p>If provided, Brownstone will email updates to this address in addition to
-      the email of the Authorized Individual</p><br />
+    <p>
+      If provided, Brownstone will email updates to this address in addition to
+      the email of the Authorized Individual
+    </p>
+    <br />
   </fieldset>
 
   <fieldset>
     <legend for="ReferralCode">Service Agreement</legend>
     <input type="text" name="ReferralCode" placeholder="Referral Code" />
-    <textarea name="ServiceAgreementText" rows="6" cols="60" readonly class="text-field">
+    <textarea
+      name="ServiceAgreementText"
+      rows="6"
+      cols="60"
+      readonly
+      class="text-field"
+    >
     Text will be replaced with actual agreement.  Lorem ipsum dolor sit amet consectetur adipiscing elit commodo sed accumsan proin quis praesent, eleifend ante ultrices congue mattis aptent lacus scelerisque aenean vivamus augue feugiat. Arcu tempus facilisis enim tempor habitasse ullamcorper sollicitudin sapien class montes lacinia pellentesque, ac litora orci consequat sodales elementum mauris velit urna volutpat eleifend aptent, ad vestibulum sagittis imperdiet fusce id vel gravida convallis nibh dictum. Arcu eleifend torquent natoque egestas fringilla purus commodo netus, semper enim sem euismod eget gravida malesuada, placerat cras ad class faucibus penatibus lacinia.
     Venenatis imperdiet habitant facilisis ac sem erat id pellentesque vehicula, velit scelerisque mauris mollis ultrices aliquam sociosqu purus, orci aenean nam molestie turpis eget iaculis at. Luctus eu torquent dictum primis a vulputate proin interdum pulvinar, nostra ultricies integer et vel tortor rutrum dignissim augue, sollicitudin tempor scelerisque nam sed neque quam arcu. Mattis gravida vitae hac commodo pulvinar ac metus, curabitur nec convallis pharetra inceptos dui ridiculus mauris, orci risus lacus nulla praesent curae.
     </textarea>
     <div>
-    <input
-      type="radio"
-      name="ServiceAgreement"
-      value="ReadAndAgree"
-      class="input-field"
-      required
-    />I have read and agree to the Service Agreement
-  </div>
-  <div>
-    <input
-      type="radio"
-      name="ServiceAgreement"
-      value="WillSignLater"
-      required
-    />I will sign the Service Agreement later (we will send you a link via
-    email)
-  </div>
-  <input type="text" name="Signature" placeholder="Signature" />
+      <input
+        type="radio"
+        name="ServiceAgreement"
+        value="ReadAndAgree"
+        class="input-field"
+        required
+      />I have read and agree to the Service Agreement
+    </div>
+    <div>
+      <input
+        type="radio"
+        name="ServiceAgreement"
+        value="WillSignLater"
+        required
+      />I will sign the Service Agreement later (we will send you a link via
+      email)
+    </div>
+    <input type="text" name="Signature" placeholder="Signature" />
   </fieldset>
   <input type="hidden" name="Fee" value="30.0" />
   <input type="hidden" name="LeadSource" />
@@ -337,6 +362,8 @@
   <input type="submit" value="Sign Me Up!" />
 </form>
 
-<script src="https://cdn.jsdelivr.net/gh/mannka/form@master/form.js" type="text/javascript" crossorigin></script>
-
-
+<script
+  src="https://cdn.jsdelivr.net/gh/mannka/form@master/form.js"
+  type="text/javascript"
+  crossorigin
+></script>
