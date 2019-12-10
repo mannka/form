@@ -28,6 +28,7 @@
   padding: 6px 10px;
   bottom: 26px;
   white-space: nowrap;
+  max-width: 100px;
 }
 
 /* the animations */

@@ -9,6 +9,8 @@
     opacity: 0;
     pointer-events: none;
     position: absolute;
+    max-height: 200px;
+    max-width: 500px;
   }
   .tooltip:after {
     border-right: 6px solid transparent;
@@ -19,16 +21,20 @@
     bottom: 20px;
     left: 5px;
     width: 0;
+    max-height: 200px;
+    max-width: 500px;
   }
   .tooltip:before {
     background: black;
     border-radius: 2px;
     color: #fff;
     content: attr(data-title);
-    font-size: 14px;
+    font-size: 11px;
     padding: 6px 10px;
     bottom: 26px;
     white-space: nowrap;
+    max-width: 500px;
+    max-height: 200px;
   }
 
   /* the animations */
@@ -202,8 +208,7 @@
       <label for="TaxIDNumber" class="form-label">Tax ID</label>
       <span
         class="tooltip fade dot"
-        data-title="orem ipsum dolor sit amet consectetur adipiscing elit commodo sed accumsan proin quis praesent, eleifend ante ultrices congue mattis aptent lacus scelerisque aenean vivamus augue feugiat. Arcu tempus facilisis enim tempor habitasse ullamcorper sollicitudin sapien class montes lacinia pellentesque, ac litora orci consequat sodales elementum mauris velit urna volutpat eleifend aptent, ad vestibulum sagittis imperdiet fusce id vel gravida convallis nibh dictum. Arcu eleifend torquent natoque egestas fringilla purus commodo netus, semper enim sem euismod eget gravida malesuada, placerat cras ad class faucibus penatibus lacinia.
-      Venenatis imperdiet habitant facilisis ac sem erat id pellentesque vehicula, velit scelerisque mauris mollis "
+        data-title="orem ipsum dolor sit amet consectetur adipiscing \\r\ elit commodo sed accumsan proin "
         >?</span
       >
     </span>
