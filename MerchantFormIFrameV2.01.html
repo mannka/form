@@ -115,6 +115,7 @@
 </style>
 
 <form
+  name="brownstone-form"
   class="form-flex"
   action="https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=2e3f5943eb03637789bd3282b03fdfa0?scope=creatorapi"
   method="post"
@@ -409,8 +410,9 @@
   <input type="hidden" name="AgentEmail" />
   <input type="hidden" name="ISOName" />
   <input type="hidden" name="ISOEmail" />
-  <br /><br />
-  <input type="submit" value="Sign Me Up!" />
+
+  <div id="error"></div>
+  <button type="submit">Sign Me Up!</button>
 </form>
 
-<!-- <script src="./form.js" type="text/javascript" crossorigin></script> -->
+<script src="./form.js" type="text/javascript" crossorigin></script>
