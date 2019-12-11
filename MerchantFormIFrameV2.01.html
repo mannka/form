@@ -112,6 +112,10 @@
   .label-title {
     color: rgba(0, 0, 0, 0);
   }
+
+  input[name="Signature"] {
+    display: hidden;
+  }
 </style>
 
 <form
@@ -386,6 +390,7 @@
         name="ServiceAgreement"
         value="ReadAndAgree"
         class="input-select"
+        id="readAndAgree"
         required
       />
       <span>I have read and agree to the Service Agreement</span>
@@ -403,7 +408,12 @@
         email)
       </span>
     </div>
-    <input type="text" name="Signature" placeholder="Signature" />
+    <input
+      type="hidden"
+      name="Signature"
+      placeholder="Signature"
+      id="signature"
+    />
   </fieldset>
   <input type="hidden" name="Fee" value="30.0" />
   <input type="hidden" name="LeadSource" />

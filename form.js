@@ -3,8 +3,20 @@ window.onload = () => {
   const merchantIDIssuer = document.querySelector(
     'input[name="MerchantIDIssuer"]'
   );
+  const signature = document.getElementById("signature");
+  var radios = document.forms["brownstone-form"].elements["ServiceAgreement"];
   const form = document.getElementById("brownstone-form");
   const errorElement = document.getElementById("error");
+
+  for (radio in radios) {
+    radios[radio].onclick = function() {
+      if (this.value == "ReadAndAgree") {
+        signature.type = "text";
+      } else {
+        signature.type = "hidden";
+      }
+    };
+  }
 
   form.addEventListener("submit", e => {
     let messages = [];
