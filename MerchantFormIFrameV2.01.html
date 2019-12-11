@@ -136,6 +136,8 @@
       maxlength="100"
       class="input-field"
       required
+      oninvalid="this.setCustomValidity('Please enter a company name')"
+      oninput="this.setCustomValidity('')"
     />
 
     <label class="form-label">Registered address</label>
