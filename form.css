@@ -1,52 +1,29 @@
 /* setup tooltips */
 .tooltip {
   position: relative;
-}
-.tooltip:before,
-.tooltip:after {
-  display: block;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  max-height: 200px;
-  max-width: 500px;
-}
-.tooltip:after {
-  border-right: 6px solid transparent;
-  border-top: 6px solid black;
-  border-left: 6px solid transparent;
-  content: "";
-  height: 0;
-  bottom: 20px;
-  left: 5px;
-  width: 0;
-  max-height: 200px;
-  max-width: 500px;
-}
-.tooltip:before {
-  background: black;
-  border-radius: 2px;
-  color: #fff;
-  content: attr(data-title);
-  font-size: 11px;
-  padding: 6px 10px;
-  bottom: 26px;
-  white-space: nowrap;
-  max-width: 500px;
-  max-height: 200px;
+  display: inline-block;
+  border-bottom: 1px dotted black;
 }
 
-/* the animations */
-/* fade */
-.tooltip.fade:after,
-.tooltip.fade:before {
-  transform: translate3d(0, -10px, 0);
-  transition: all 0.15s ease-in-out;
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 120%;
+  left: 50%;
+  margin-left: -60px;
 }
-.tooltip.fade:hover:after,
-.tooltip.fade:hover:before {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 .dot {
@@ -101,13 +78,29 @@ form fieldset {
   justify-content: space-between;
 }
 
-.form-label,
-.input-field,
-.select-field,
-.tooltip-label {
+input,
+select,
+label,
+textarea,
+fieldset,
+.tooltip {
   margin-bottom: 8px;
 }
 
 .label-title {
   color: rgba(0, 0, 0, 0);
+}
+
+input[name="Signature"] {
+  display: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .one-third {
+    width: 100%;
+  }
+
+  .half {
+    width: 100%;
+  }
 }

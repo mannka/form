@@ -1,111 +1,5 @@
-<style>
-  /* setup tooltips */
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-  }
-
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    bottom: 120%;
-    left: 50%;
-    margin-left: -60px;
-  }
-
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  }
-
-  .dot {
-    height: 16px;
-    width: 16px;
-    background-color: black;
-    color: white;
-    border-radius: 50%;
-    display: inline-block;
-    text-align: center;
-    line-height: 16px;
-  }
-
-  .input-field,
-  .text-field {
-    width: 100%;
-  }
-
-  .group {
-    justify-content: space-between;
-  }
-
-  .one-third {
-    width: 30%;
-  }
-
-  .half {
-    width: 45%;
-  }
-
-  .form-flex,
-  form fieldset {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .flex-row {
-    flex-direction: row;
-  }
-
-  .flex-column {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .flex-wrap {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .flex-space-between {
-    justify-content: space-between;
-  }
-
-  input,
-  select,
-  label,
-  textarea,
-  fieldset,
-  .tooltip {
-    margin-bottom: 8px;
-  }
-
-  .label-title {
-    color: rgba(0, 0, 0, 0);
-  }
-
-  input[name="Signature"] {
-    display: hidden;
-  }
-
-  @media only screen and (max-width: 600px) {
-    .one-third {
-      width: 100%;
-    }
-
-    .half {
-      width: 100%;
-    }
-  }
-</style>
+<link rel="stylesheet" href="./form.css" />
+<link rel="stylesheet" href="./brownstone-form.css" />
 
 <form
   name="brownstone-form"
@@ -387,6 +281,12 @@
       />
       <span>I have read and agree to the Service Agreement</span>
     </div>
+    <input
+      type="hidden"
+      name="Signature"
+      placeholder="Signature"
+      id="signature"
+    />
     <div class="flex-row">
       <input
         type="radio"
@@ -400,12 +300,6 @@
         email)
       </span>
     </div>
-    <input
-      type="hidden"
-      name="Signature"
-      placeholder="Signature"
-      id="signature"
-    />
   </fieldset>
   <input type="hidden" name="Fee" value="30.0" />
   <input type="hidden" name="LeadSource" />
