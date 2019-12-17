@@ -95,6 +95,13 @@ input[name="Signature"] {
   display: hidden;
 }
 
+.agreement-message {
+  height: 200px;
+  overflow-y: scroll;
+  border: 1px solid;
+  padding: 15px;
+}
+
 @media only screen and (max-width: 600px) {
   .one-third {
     width: 100%;

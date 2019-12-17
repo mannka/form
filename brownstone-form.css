@@ -1,6 +1,7 @@
 input,
 select,
-textarea {
+textarea,
+.agreement-message {
   padding: 15px 10px !important;
   border: none !important;
   font-weight: 500 !important;
@@ -10,6 +11,12 @@ textarea {
   background: #ffffff !important;
   outline: 0px !important;
   margin-bottom: 3% !important;
+}
+
+.agreement-message,
+.agreement-message ol li,
+.agreement-message p {
+  color: black;
 }
 
 select {
@@ -27,7 +34,6 @@ select {
   display: block;
   border-radius: 6px;
   margin: auto;
-  font-family: 'Raleway',Helvetica,Arial,Lucida,sans-serif;
+  font-family: "Raleway", Helvetica, Arial, Lucida, sans-serif;
   margin-bottom: 15px;
-}
 }
