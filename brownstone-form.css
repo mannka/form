@@ -11,3 +11,23 @@ textarea {
   outline: 0px !important;
   margin-bottom: 3% !important;
 }
+
+select {
+  height: 48px;
+  padding: 15px;
+}
+
+.button {
+  border: none;
+  background: #bf2e1a;
+  padding: 15px 52px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  display: block;
+  border-radius: 6px;
+  margin: auto;
+  font-family: 'Raleway',Helvetica,Arial,Lucida,sans-serif;
+  margin-bottom: 15px;
+}
+}
