@@ -1,0 +1,420 @@
+<style>
+  /* setup tooltips */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -60px;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .dot {
+    height: 16px;
+    width: 16px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 16px;
+  }
+
+  .input-field,
+  .text-field {
+    width: 100%;
+  }
+
+  .group {
+    justify-content: space-between;
+  }
+
+  .one-third {
+    width: 30%;
+  }
+
+  .half {
+    width: 45%;
+  }
+
+  .form-flex,
+  form fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flex-row {
+    flex-direction: row;
+  }
+
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .flex-space-between {
+    justify-content: space-between;
+  }
+
+  input,
+  select,
+  label,
+  textarea,
+  fieldset,
+  .tooltip {
+    margin-bottom: 8px;
+  }
+
+  .label-title {
+    color: rgba(0, 0, 0, 0);
+  }
+
+  input[name="Signature"] {
+    display: hidden;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .one-third {
+      width: 100%;
+    }
+
+    .half {
+      width: 100%;
+    }
+  }
+</style>
+
+<form
+  name="brownstone-form"
+  class="form-flex"
+  action="https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=2e3f5943eb03637789bd3282b03fdfa0?scope=creatorapi"
+  method="post"
+  id="brownstone-form"
+>
+  <fieldset class="form-set">
+    <legend class="form-set-legend">Business / Organization</legend>
+
+    <input
+      type="text"
+      name="Company"
+      placeholder="Legal name of organization"
+      size="40"
+      maxlength="100"
+      class="input-field"
+      required
+      oninvalid="this.setCustomValidity('Please enter a company name')"
+      oninput="this.setCustomValidity('')"
+    />
+
+    <label class="form-label">Registered address</label>
+    <input
+      type="text"
+      name="AddressLine1"
+      placeholder="Address line 1"
+      class="input-field"
+      required
+    />
+
+    <input
+      type="text"
+      name="AddressLine2"
+      placeholder="Address line 2"
+      class="input-field"
+    />
+
+    <div class="group flex-wrap flex-row">
+      <input
+        type="text"
+        name="City"
+        placeholder="City"
+        class="input-field one-third"
+        required
+      />
+
+      <select name="State" class="select-field one-third" required>
+        <option value="" selected="selected">State</option>
+        <option>Alabama</option>
+        <option>Alaska</option>
+        <option>Arizona</option>
+        <option>Arkansas</option>
+        <option>California</option>
+        <option>Colorado</option>
+        <option>Connecticut</option>
+        <option>Delaware</option>
+        <option>District Of Columbia</option>
+        <option>Florida</option>
+        <option>Georgia</option>
+        <option>Hawaii</option>
+        <option>Idaho</option>
+        <option>Illinois</option>
+        <option>Indiana</option>
+        <option>Iowa</option>
+        <option>Kansas</option>
+        <option>Kentucky</option>
+        <option>Louisiana</option>
+        <option>Maine</option>
+        <option>Maryland</option>
+        <option>Massachusetts</option>
+        <option>Michigan</option>
+        <option>Minnesota</option>
+        <option>Mississippi</option>
+        <option>Missouri</option>
+        <option>Montana</option>
+        <option>Nebraska</option>
+        <option>Nevada</option>
+        <option>New Hampshire</option>
+        <option>New Jersey</option>
+        <option>New Mexico</option>
+        <option>New York</option>
+        <option>North Carolina</option>
+        <option>North Dakota</option>
+        <option>Ohio</option>
+        <option>Oklahoma</option>
+        <option>Oregon</option>
+        <option>Pennsylvania</option>
+        <option>Rhode Island</option>
+        <option>South Carolina</option>
+        <option>South Dakota</option>
+        <option>Tennessee</option>
+        <option>Texas</option>
+        <option>Utah</option>
+        <option>Vermont</option>
+        <option>Virginia</option>
+        <option>Washington</option>
+        <option>West Virginia</option>
+        <option>Wisconsin</option>
+        <option>Wyoming</option>
+      </select>
+
+      <input
+        type="text"
+        name="ZipCode"
+        placeholder="Zipcode"
+        class="input-field one-third"
+        required
+      />
+    </div>
+
+    <div class="group flex-row flex-wrap">
+      <div class="one-third">
+        <div class="flex-row">
+          <label for="TaxIDNumber" class="form-label">Tax ID</label>
+          <div class="tooltip dot">
+            ?<span class="tooltiptext"
+              >orem ipsum dolor sit amet consectetur adipiscing elit commodo sed
+              accumsan proin</span
+            >
+          </div>
+        </div>
+        <input
+          type="text"
+          name="TaxIDNumber"
+          placeholder="123456789"
+          class="input-field"
+        />
+      </div>
+
+      <div class="flex-column one-third">
+        <label for="MerchandID" class="form-label">Merchant ID</label>
+        <input type="text" name="MerchantID" class="input-field" />
+      </div>
+
+      <div class="flex-column one-third">
+        <label for="MerchantIDIssuer" class="form-label"
+          >Merchant ID Issued By</label
+        >
+        <input type="text" name="MerchantIDIssuer" class="input-field" />
+      </div>
+    </div>
+
+    <label class="form-label" for="MoreMIDs"
+      >Has your organization used multiple Merchant ID numbers from
+      2004-2019?</label
+    >
+    <select name="MoreMIDs" class="select-field" required>
+      <option value="" selected="selected">Choose...</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+
+    <p>
+      Brownstone will send details via email on how to provide this information
+      for your claim.
+    </p>
+  </fieldset>
+
+  <fieldset class="form-set">
+    <legend class="form-set-legend">
+      Authorized Individual for this Organization
+    </legend>
+
+    <label class="form-label">Name</label>
+    <div class="group flex-row flex-wrap">
+      <input
+        type="text"
+        name="FirstName"
+        placeholder="First name"
+        class="input-field half"
+        required
+      />
+
+      <input
+        type="text"
+        name="LastName"
+        placeholder="Last name"
+        class="input-field half"
+        required
+      />
+    </div>
+
+    <div class="group flex-row flex-wrap">
+      <div class="half">
+        <label for="Title" class="form-label label-title">Title</label>
+        <input
+          type="text"
+          name="Title"
+          placeholder="Title"
+          class="input-field"
+        />
+      </div>
+
+      <div class="half">
+        <label for="WorkPhone" class="form-label">Reliable phone number</label>
+        <input
+          type="tel"
+          name="WorkPhone"
+          placeholder="###-###-####"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          class="input-field"
+        />
+      </div>
+    </div>
+
+    <div class="group flex-row flex-wrap">
+      <input
+        type="email"
+        name="Email"
+        placeholder="Email address"
+        title="We will use this address to communicate with you about the settlement."
+        class="input-field half"
+        required
+      />
+      <input
+        type="email"
+        name="Email2"
+        placeholder="Verify email address"
+        class="input-field half"
+        required
+      />
+    </div>
+
+    <p>
+      Brownstone will rely on this email address to communicate with you as we
+      work your claim
+    </p>
+
+    <div class="group flex-row flex-wrap">
+      <input
+        type="email"
+        name="SecondaryEmail"
+        placeholder="Secondary email"
+        class="input-field half"
+      />
+      <input
+        type="email"
+        name="SecondaryEmail2"
+        placeholder="Verify secondary email"
+        class="input-field half"
+      />
+    </div>
+
+    <p>
+      If provided, Brownstone will email updates to this address in addition to
+      the email of the Authorized Individual
+    </p>
+    <br />
+  </fieldset>
+
+  <fieldset>
+    <legend for="ReferralCode">Service Agreement</legend>
+    <input
+      type="text"
+      name="ReferralCode"
+      placeholder="Referral Code"
+      class="input-field"
+    />
+    <textarea
+      name="ServiceAgreementText"
+      rows="6"
+      cols="60"
+      readonly
+      class="text-field"
+    >
+    Text will be replaced with actual agreement.  Lorem ipsum dolor sit amet consectetur adipiscing elit commodo sed accumsan proin quis praesent, eleifend ante ultrices congue mattis aptent lacus scelerisque aenean vivamus augue feugiat. Arcu tempus facilisis enim tempor habitasse ullamcorper sollicitudin sapien class montes lacinia pellentesque, ac litora orci consequat sodales elementum mauris velit urna volutpat eleifend aptent, ad vestibulum sagittis imperdiet fusce id vel gravida convallis nibh dictum. Arcu eleifend torquent natoque egestas fringilla purus commodo netus, semper enim sem euismod eget gravida malesuada, placerat cras ad class faucibus penatibus lacinia.
+    Venenatis imperdiet habitant facilisis ac sem erat id pellentesque vehicula, velit scelerisque mauris mollis ultrices aliquam sociosqu purus, orci aenean nam molestie turpis eget iaculis at. Luctus eu torquent dictum primis a vulputate proin interdum pulvinar, nostra ultricies integer et vel tortor rutrum dignissim augue, sollicitudin tempor scelerisque nam sed neque quam arcu. Mattis gravida vitae hac commodo pulvinar ac metus, curabitur nec convallis pharetra inceptos dui ridiculus mauris, orci risus lacus nulla praesent curae.
+    </textarea>
+    <div class="flex-row">
+      <input
+        type="radio"
+        name="ServiceAgreement"
+        value="ReadAndAgree"
+        class="input-select"
+        id="readAndAgree"
+        required
+      />
+      <span>I have read and agree to the Service Agreement</span>
+    </div>
+    <div class="flex-row">
+      <input
+        type="radio"
+        name="ServiceAgreement"
+        value="WillSignLater"
+        class="input-select"
+        required
+      />
+      <span>
+        I will sign the Service Agreement later (we will send you a link via
+        email)
+      </span>
+    </div>
+    <input
+      type="hidden"
+      name="Signature"
+      placeholder="Signature"
+      id="signature"
+    />
+  </fieldset>
+  <input type="hidden" name="Fee" value="30.0" />
+  <input type="hidden" name="LeadSource" />
+  <input type="hidden" name="AgentEmail" />
+  <input type="hidden" name="ISOName" />
+  <input type="hidden" name="ISOEmail" />
+
+  <div id="error"></div>
+  <button type="submit">Sign Me Up!</button>
+</form>
+
+<script src="./form.js" type="text/javascript" crossorigin></script>
