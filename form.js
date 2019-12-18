@@ -44,7 +44,7 @@ window.onload = () => {
   }
 
   const verifyValue = (element, text) => {
-    if (element.value === "" || e.value == null) {
+    if (element.value === "" || element.value == null) {
       element.classList.add("error-border");
       messages.push(text);
     } else {
