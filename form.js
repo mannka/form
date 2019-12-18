@@ -25,7 +25,7 @@ window.onload = () => {
   const signatureRadio = document.getElementById("signature");
   const signLaterRadio = document.getElementById("signLater");
   const signatureField = document.getElementById("signature");
-  var radios = document.forms["brownstone-form"].elements["ServiceAgreement"];
+  // var radios = document.forms["brownstone-form"].elements["ServiceAgreement"];
   const form = document.getElementById("brownstone-form");
 
   const errorElement = document.getElementById("errors");
@@ -33,15 +33,15 @@ window.onload = () => {
 
   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  for (radio in radios) {
-    radios[radio].onclick = function() {
-      if (this.value == "ReadAndAgree") {
-        signatureField.type = "text";
-      } else {
-        signatureField.type = "hidden";
-      }
-    };
-  }
+  // for (radio in radios) {
+  //   radios[radio].onclick = function() {
+  //     if (this.value == "ReadAndAgree") {
+  //       signatureField.type = "text";
+  //     } else {
+  //       signatureField.type = "hidden";
+  //     }
+  //   };
+  // }
 
   const verifyValue = (element, text) => {
     if (element.value === "" || element.value == null) {
