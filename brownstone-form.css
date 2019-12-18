@@ -37,3 +37,11 @@ select {
   font-family: "Raleway", Helvetica, Arial, Lucida, sans-serif;
   margin-bottom: 15px;
 }
+
+fieldset {
+  border: 2px solid white;
+}
+
+#infoClaim {
+  margin-bottom: 20px;
+}

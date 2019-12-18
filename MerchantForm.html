@@ -7,6 +7,7 @@
   action="https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=2e3f5943eb03637789bd3282b03fdfa0?scope=creatorapi"
   method="post"
   id="brownstone-form"
+  novalidate
 >
   <fieldset class="form-set">
     <legend class="form-set-legend">Business / Organization</legend>
@@ -18,7 +19,6 @@
       size="40"
       maxlength="100"
       class="input-field"
-      required
       oninvalid="this.setCustomValidity('Please enter a company name')"
       oninput="this.setCustomValidity('')"
     />
@@ -30,7 +30,6 @@
       placeholder="Address line 1"
       class="input-field"
       maxlength="50"
-      required
     />
 
     <input
@@ -47,10 +46,9 @@
         name="City"
         placeholder="City"
         class="input-field one-third"
-        required
       />
 
-      <select name="State" class="select-field one-third" required>
+      <select name="State" class="select-field one-third">
         <option value="" selected="selected">State</option>
         <option>Alabama</option>
         <option>Alaska</option>
@@ -111,7 +109,6 @@
         placeholder="Zipcode"
         maxlength="10"
         class="input-field one-third"
-        required
       />
     </div>
 
@@ -126,6 +123,7 @@
             >
           </div>
         </div>
+
         <input
           type="text"
           name="TaxIDNumber"
@@ -134,10 +132,30 @@
           class="input-field"
         />
       </div>
+    </div>
 
-      <div class="flex-column one-third">
-        <label for="MerchandID" class="form-label">Merchant ID</label>
+    <div class="group flex-row flex-wrap moreMID">
+      <label class="form-label half" for="MoreMIDs" id="labelIdQuestion"
+        >Has your organization used multiple Merchant ID numbers from
+        2004-2019?</label
+      >
+      <select name="MoreMIDs" class="select-field half" id="idQuestion">
+        <option value="" selected="selected">Choose...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+
+    <p id="infoClaim">
+      Brownstone will send details via email on how to provide this information
+      for your claim.
+    </p>
+
+    <div class="group flex-row flex-wrap">
+      <div class="one-fourth-bigger">
+        <!-- <label for="MerchandID" class="form-label">Merchant ID</label> -->
         <input
+          placeholder="Merchant ID"
           type="text"
           name="MerchantID"
           maxlength="20"
@@ -145,33 +163,39 @@
         />
       </div>
 
-      <div class="flex-column one-third">
-        <label for="MerchantIDIssuer" class="form-label"
+      <div class="one-fourth-bigger">
+        <!-- <label for="MerchantIDIssuer" class="form-label"
           >Merchant ID Issued By</label
-        >
+        > -->
         <input
+          placeholder="Merchant ID Issued By"
           type="text"
           name="MerchantIDIssuer"
           maxlength="50"
           class="input-field"
         />
       </div>
+
+      <div class="one-fourth-smaller">
+        <input
+          type="text"
+          name="MerchantIDStart"
+          placeholder="Start Year"
+          maxlength="20"
+          class="input-field"
+        />
+      </div>
+
+      <div class="one-fourth-smaller">
+        <input
+          type="text"
+          name="MerchantIDEnd"
+          placeholder="End Year"
+          maxlength="20"
+          class="input-field"
+        />
+      </div>
     </div>
-
-    <label class="form-label" for="MoreMIDs"
-      >Has your organization used multiple Merchant ID numbers from
-      2004-2019?</label
-    >
-    <select name="MoreMIDs" class="select-field" required>
-      <option value="" selected="selected">Choose...</option>
-      <option>Yes</option>
-      <option>No</option>
-    </select>
-
-    <p>
-      Brownstone will send details via email on how to provide this information
-      for your claim.
-    </p>
   </fieldset>
 
   <fieldset class="form-set">
@@ -179,7 +203,12 @@
       Authorized Individual for this Organization
     </legend>
 
-    <label class="form-label">Name</label>
+    <p>
+      Brownstone will rely on this information to communicate with you as we
+      work your claim.
+    </p>
+
+    <!-- <label class="form-label">Name</label> -->
     <div class="group flex-row flex-wrap">
       <input
         type="text"
@@ -187,7 +216,6 @@
         placeholder="First name"
         maxlength="50"
         class="input-field half"
-        required
       />
 
       <input
@@ -196,32 +224,27 @@
         placeholder="Last name"
         maxlength="50"
         class="input-field half"
-        required
       />
     </div>
 
     <div class="group flex-row flex-wrap">
-      <div class="half">
-        <label for="Title" class="form-label label-title">Title</label>
-        <input
-          type="text"
-          name="Title"
-          placeholder="Title"
-          class="input-field"
-        />
-      </div>
+      <!-- <label for="Title" class="form-label label-title">Title</label> -->
+      <input
+        type="text"
+        name="Title"
+        placeholder="Title"
+        class="input-field half"
+      />
 
-      <div class="half">
-        <label for="WorkPhone" class="form-label">Reliable phone number</label>
-        <input
-          type="tel"
-          name="WorkPhone"
-          placeholder="###-###-####"
-          maxlength="12"
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          class="input-field"
-        />
-      </div>
+      <!-- <label for="WorkPhone" class="form-label">Reliable phone number</label> -->
+      <input
+        type="tel"
+        name="WorkPhone"
+        placeholder="Phone ###-###-####"
+        maxlength="12"
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        class="input-field half"
+      />
     </div>
 
     <div class="group flex-row flex-wrap">
@@ -232,7 +255,6 @@
         maxlength="50"
         title="We will use this address to communicate with you about the settlement."
         class="input-field half"
-        required
       />
       <input
         type="email"
@@ -240,23 +262,25 @@
         placeholder="Verify email address"
         maxlength="50"
         class="input-field half"
-        required
       />
     </div>
 
-    <p>
-      Brownstone will rely on this email address to communicate with you as we
-      work your claim
-    </p>
-
     <div class="group flex-row flex-wrap">
-      <input
-        type="email"
-        name="SecondaryEmail"
-        placeholder="Secondary email"
-        maxlength="50"
-        class="input-field half"
-      />
+      <div class="half tooltip-parent-email">
+        <input
+          type="email"
+          name="SecondaryEmail"
+          placeholder="Secondary email"
+          maxlength="50"
+          class="input-field"
+        />
+        <div class="tooltip dot dot-email">
+          ?<span class="tooltiptext"
+            >If provided, Brownstone will email updates to this address in
+            addition to the email of the Authorized Individual</span
+          >
+        </div>
+      </div>
       <input
         type="email"
         name="SecondaryEmail2"
@@ -265,11 +289,6 @@
         class="input-field half"
       />
     </div>
-
-    <p>
-      If provided, Brownstone will email updates to this address in addition to
-      the email of the Authorized Individual
-    </p>
     <br />
   </fieldset>
 
@@ -495,7 +514,6 @@
         value="ReadAndAgree"
         class="input-select"
         id="readAndAgree"
-        required
       />
       <span>I have read and agree to the Service Agreement</span>
     </div>
@@ -511,7 +529,7 @@
         name="ServiceAgreement"
         value="WillSignLater"
         class="input-select"
-        required
+        id="signLater"
       />
       <span>
         I will sign the Service Agreement later (we will send you a link via
@@ -525,7 +543,7 @@
   <input type="hidden" name="ISOName" />
   <input type="hidden" name="ISOEmail" />
 
-  <div id="error"></div>
+  <ul id="errors"></ul>
   <button type="submit" class="gform_button button">Sign Me Up!</button>
 </form>
 
