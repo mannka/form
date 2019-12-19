@@ -52,3 +52,11 @@ fieldset {
 #infoClaim {
   margin-bottom: 20px;
 }
+
+.error-border {
+  border: 1px solid red !important;
+}
+
+.red {
+  color: red !important;
+}
