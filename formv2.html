@@ -1,5 +1,5 @@
 <script>
-  function loadJS() {
+  window.onload = () => {
     const orgNameField = document.querySelector('input[name="Company"]');
     const addressField = document.querySelector('input[name="AddressLine1"]');
     const cityField = document.querySelector('input[name="City"]');
@@ -157,7 +157,7 @@
       }
     });
     console.log("inside of window");
-  }
+  };
   console.log("outside of window");
 </script>
 
