@@ -61,6 +61,10 @@ fieldset {
   color: red !important;
 }
 
+#errors {
+  margin-bottom: 15px;
+}
+
 #errors ul li {
   color: red !important;
 }
