@@ -137,4 +137,4 @@ form.addEventListener("submit", e => {
   }
 });
 
-console.log("out");
+console.log("loaded");
