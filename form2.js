@@ -22,27 +22,14 @@ window.addEventListener("load", () => {
   const merchantIDIssuerField = document.querySelector(
     'input[name="MerchantIDIssuer"]'
   );
-  const signatureRadio = document.getElementById("signature");
-  const signLaterRadio = document.getElementById("signLater");
   const signatureField = document.getElementById("signature");
 
   const form = document.getElementById("mainForm");
-  var radios = form.elements["ServiceAgreement"];
 
   const errorElement = document.getElementById("errors");
   let messages = [];
 
   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-  for (radio in radios) {
-    radios[radio].onclick = function() {
-      if (this.value == "ReadAndAgree") {
-        signatureField.type = "text";
-      } else {
-        signatureField.type = "hidden";
-      }
-    };
-  }
 
   const verifyValue = (element, text) => {
     if (element.value === "" || element.value == null) {
