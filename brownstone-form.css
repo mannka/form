@@ -13,6 +13,12 @@ textarea,
   margin-bottom: 3% !important;
 }
 
+p,
+label,
+fieldset {
+  color: white;
+}
+
 .agreement-message,
 .agreement-message ol li,
 .agreement-message p {

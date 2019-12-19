@@ -145,11 +145,13 @@ window.onload = () => {
     if (messages.length > 0) {
       e.preventDefault();
       errorElement.innerHTML = " ";
+      const ul = document.createElement("ul");
       messages.map(error => {
         const li = document.createElement("li");
         const text = document.createTextNode(error);
         li.appendChild(text);
-        errorElement.appendChild(li);
+        ul.appendChild(li);
+        errorElement.appendChild(ul);
       });
       // errorElement.innerText = messages.join(", ");
     }
