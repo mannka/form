@@ -15,7 +15,8 @@ textarea,
 
 p,
 label,
-fieldset {
+fieldset,
+ul li {
   color: white;
 }
 
