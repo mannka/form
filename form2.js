@@ -136,6 +136,5 @@ form.addEventListener("submit", e => {
     // errorElement.innerText = messages.join(", ");
   }
 });
-console.log("in");
 
 console.log("out");
