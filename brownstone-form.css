@@ -68,3 +68,7 @@ fieldset {
 #errors ul li {
   color: red !important;
 }
+
+#idQuestion {
+  margin-bottom: 0 !important;
+}
