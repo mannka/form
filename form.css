@@ -155,6 +155,10 @@ fieldset {
   top: 15px;
 }
 
+.red {
+  color: red;
+}
+
 @media only screen and (max-width: 600px) {
   .moreMID {
     flex-wrap: wrap;
