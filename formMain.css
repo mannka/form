@@ -159,6 +159,21 @@ fieldset {
   color: red;
 }
 
+#errors {
+  /* padding: 15px; */
+}
+
+#errors ul {
+  color: #d8000c;
+  background-color: #ffd2d2;
+  list-style-type: none;
+  padding: 15px 0;
+}
+
+#errors ul li {
+  padding: 0 15px;
+}
+
 @media only screen and (max-width: 600px) {
   .moreMID {
     flex-wrap: wrap;
