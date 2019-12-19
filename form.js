@@ -94,7 +94,6 @@ window.onload = () => {
     verifyValue(orgNameField, "please enter an organization name");
     verifyValue(addressField, "Please enter an address");
     verifyValue(cityField, "Please enter a city");
-    verifyValue(cityField, "Please enter a city");
     verifyOptionValue(stateField, "Please select a state");
     verifyValue(zipcodeField, "Please enter a Zipcode");
     verifyOptionValue(
