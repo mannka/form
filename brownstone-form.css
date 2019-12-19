@@ -60,3 +60,7 @@ fieldset {
 .red {
   color: red !important;
 }
+
+#errors ul li {
+  color: red !important;
+}
