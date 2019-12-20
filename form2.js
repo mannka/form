@@ -1,36 +1,36 @@
-let orgNameField = document.querySelector('input[name="Company"]');
-let addressField = document.querySelector('input[name="AddressLine1"]');
-let cityField = document.querySelector('input[name="City"]');
-let stateField = document.querySelector('select[name="State"]');
-let zipcodeField = document.querySelector('input[name="ZipCode"]');
-let merchantYesNoField = document.querySelector('select[name="MoreMIDs"]');
-let firstNameField = document.querySelector('input[name="FirstName"]');
-let lastNameField = document.querySelector('input[name="LastName"]');
-let emailField = document.querySelector('input[name="Email"]');
-let verifyEmailField = document.querySelector('input[name="Email2"]');
-let secondaryEmailField = document.querySelector(
+var orgNameField = document.querySelector('input[name="Company"]');
+var addressField = document.querySelector('input[name="AddressLine1"]');
+var cityField = document.querySelector('input[name="City"]');
+var stateField = document.querySelector('select[name="State"]');
+var zipcodeField = document.querySelector('input[name="ZipCode"]');
+var merchantYesNoField = document.querySelector('select[name="MoreMIDs"]');
+var firstNameField = document.querySelector('input[name="FirstName"]');
+var lastNameField = document.querySelector('input[name="LastName"]');
+var emailField = document.querySelector('input[name="Email"]');
+var verifyEmailField = document.querySelector('input[name="Email2"]');
+var secondaryEmailField = document.querySelector(
   'input[name="SecondaryEmail"]'
 );
-let verifySecondaryEmailField = document.querySelector(
+var verifySecondaryEmailField = document.querySelector(
   'input[name="SecondaryEmail2"]'
 );
-let serviceAgreementField = document.querySelector(
+var serviceAgreementField = document.querySelector(
   'input[name="ServiceAgreement"]'
 );
-let merchantIdField = document.querySelector('input[name="MerchantID"]');
-let merchantIDIssuerField = document.querySelector(
+var merchantIdField = document.querySelector('input[name="MerchantID"]');
+var merchantIDIssuerField = document.querySelector(
   'input[name="MerchantIDIssuer"]'
 );
-let signatureField = document.getElementById("signature");
+var signatureField = document.getElementById("signature");
 
-let form = document.getElementById("mainForm");
+var form = document.getElementById("mainForm");
 
-let errorElement = document.getElementById("errors");
-let messages = [];
+var errorElement = document.getElementById("errors");
+var messages = [];
 
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-let verifyValue = (element, text) => {
+var verifyValue = (element, text) => {
   if (element.value === "" || element.value == null) {
     element.classList.add("error-border");
     messages.push(text);
@@ -39,7 +39,7 @@ let verifyValue = (element, text) => {
   }
 };
 
-let verifyOptionValue = (element, text) => {
+var verifyOptionValue = (element, text) => {
   if (
     element.options[element.selectedIndex].value === "" ||
     element.options[element.selectedIndex].value == null
@@ -125,10 +125,10 @@ form.addEventListener("submit", e => {
   if (messages.length > 0) {
     e.preventDefault();
     errorElement.innerHTML = " ";
-    let ul = document.createElement("ul");
+    var ul = document.createElement("ul");
     messages.map(error => {
-      let li = document.createElement("li");
-      let text = document.createTextNode(error);
+      var li = document.createElement("li");
+      var text = document.createTextNode(error);
       li.appendChild(text);
       ul.appendChild(li);
       errorElement.appendChild(ul);
