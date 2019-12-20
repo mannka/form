@@ -1,3 +1,4 @@
+"use strict";
 var orgNameField = document.querySelector('input[name="Company"]');
 var addressField = document.querySelector('input[name="AddressLine1"]');
 var cityField = document.querySelector('input[name="City"]');
@@ -30,16 +31,16 @@ var messages = [];
 
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-var verifyValue = (element, text) => {
+function verifyValue(element, text) {
   if (element.value === "" || element.value == null) {
     element.classList.add("error-border");
     messages.push(text);
   } else {
     element.classList.remove("error-border");
   }
-};
+}
 
-var verifyOptionValue = (element, text) => {
+function verifyOptionValue(element, text) {
   if (
     element.options[element.selectedIndex].value === "" ||
     element.options[element.selectedIndex].value == null
@@ -49,7 +50,7 @@ var verifyOptionValue = (element, text) => {
   } else {
     element.classList.remove("error-border");
   }
-};
+}
 
 form.addEventListener("submit", e => {
   messages = [];
@@ -126,7 +127,7 @@ form.addEventListener("submit", e => {
     e.preventDefault();
     errorElement.innerHTML = " ";
     var ul = document.createElement("ul");
-    messages.map(error => {
+    messages.map(function(error) {
       var li = document.createElement("li");
       var text = document.createTextNode(error);
       li.appendChild(text);
