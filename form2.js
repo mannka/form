@@ -1,36 +1,36 @@
-const orgNameField = document.querySelector('input[name="Company"]');
-const addressField = document.querySelector('input[name="AddressLine1"]');
-const cityField = document.querySelector('input[name="City"]');
-const stateField = document.querySelector('select[name="State"]');
-const zipcodeField = document.querySelector('input[name="ZipCode"]');
-const merchantYesNoField = document.querySelector('select[name="MoreMIDs"]');
-const firstNameField = document.querySelector('input[name="FirstName"]');
-const lastNameField = document.querySelector('input[name="LastName"]');
-const emailField = document.querySelector('input[name="Email"]');
-const verifyEmailField = document.querySelector('input[name="Email2"]');
-const secondaryEmailField = document.querySelector(
+let orgNameField = document.querySelector('input[name="Company"]');
+let addressField = document.querySelector('input[name="AddressLine1"]');
+let cityField = document.querySelector('input[name="City"]');
+let stateField = document.querySelector('select[name="State"]');
+let zipcodeField = document.querySelector('input[name="ZipCode"]');
+let merchantYesNoField = document.querySelector('select[name="MoreMIDs"]');
+let firstNameField = document.querySelector('input[name="FirstName"]');
+let lastNameField = document.querySelector('input[name="LastName"]');
+let emailField = document.querySelector('input[name="Email"]');
+let verifyEmailField = document.querySelector('input[name="Email2"]');
+let secondaryEmailField = document.querySelector(
   'input[name="SecondaryEmail"]'
 );
-const verifySecondaryEmailField = document.querySelector(
+let verifySecondaryEmailField = document.querySelector(
   'input[name="SecondaryEmail2"]'
 );
-const serviceAgreementField = document.querySelector(
+let serviceAgreementField = document.querySelector(
   'input[name="ServiceAgreement"]'
 );
-const merchantIdField = document.querySelector('input[name="MerchantID"]');
-const merchantIDIssuerField = document.querySelector(
+let merchantIdField = document.querySelector('input[name="MerchantID"]');
+let merchantIDIssuerField = document.querySelector(
   'input[name="MerchantIDIssuer"]'
 );
-const signatureField = document.getElementById("signature");
+let signatureField = document.getElementById("signature");
 
-const form = document.getElementById("mainForm");
+let form = document.getElementById("mainForm");
 
-const errorElement = document.getElementById("errors");
+let errorElement = document.getElementById("errors");
 let messages = [];
 
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-const verifyValue = (element, text) => {
+let verifyValue = (element, text) => {
   if (element.value === "" || element.value == null) {
     element.classList.add("error-border");
     messages.push(text);
@@ -39,7 +39,7 @@ const verifyValue = (element, text) => {
   }
 };
 
-const verifyOptionValue = (element, text) => {
+let verifyOptionValue = (element, text) => {
   if (
     element.options[element.selectedIndex].value === "" ||
     element.options[element.selectedIndex].value == null
@@ -125,10 +125,10 @@ form.addEventListener("submit", e => {
   if (messages.length > 0) {
     e.preventDefault();
     errorElement.innerHTML = " ";
-    const ul = document.createElement("ul");
+    let ul = document.createElement("ul");
     messages.map(error => {
-      const li = document.createElement("li");
-      const text = document.createTextNode(error);
+      let li = document.createElement("li");
+      let text = document.createTextNode(error);
       li.appendChild(text);
       ul.appendChild(li);
       errorElement.appendChild(ul);
