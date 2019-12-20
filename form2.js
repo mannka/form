@@ -52,7 +52,7 @@ function verifyOptionValue(element, text) {
   }
 }
 
-form.addEventListener("submit", e => {
+form.addEventListener("submit", function(e) {
   messages = [];
   merchantIDIssuerField.classList.remove("error-border");
   merchantIdField.classList.remove("error-border");
