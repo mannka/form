@@ -24,6 +24,8 @@ var merchantIdField = document.querySelector('input[name="MerchantID"]');
 var merchantIDIssuerField = document.querySelector(
   'input[name="MerchantIDIssuer"]'
 );
+var startYearField = document.querySelector('select[name="MerchantIDStart"]');
+var endYearField = document.querySelector('select[name="MerchantIDEnd"]');
 var form = document.getElementById("mainForm");
 var signatureField = document.getElementById("signature");
 var radios = form.ServiceAgreement;
@@ -35,10 +37,10 @@ var messages = [];
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 // function to verify there is a value for input fields
-function verifyValue(element, text) {
+function verifyValue(element) {
   if (element.value === "" || element.value == null) {
     element.classList.add("error-border");
-    messages.push(text);
+    messages.push(`please enter ${element.placeholder}`);
   } else {
     element.classList.remove("error-border");
   }
@@ -79,39 +81,33 @@ for (var i = 0; i < radios.length; i++) {
 form.addEventListener("submit", function(e) {
   // ensure the messages is cleared on each submit and remove error borders
   messages = [];
-  merchantIDIssuerField.classList.remove("error-border");
-  merchantIdField.classList.remove("error-border");
-
-  // check if merchants fields have value and verify
-  if (merchantIdField.value) {
-    if (
-      merchantIDIssuerField.value === "" ||
-      merchantIDIssuerField.value == null
-    ) {
-      merchantIDIssuerField.classList.add("error-border");
-      messages.push("Merchant Issuer ID is required if Merchant ID is entered");
-    }
-  }
-
-  if (merchantIDIssuerField.value) {
-    if (merchantIdField.value === "" || merchantIdField.value == null) {
-      merchantIdField.classList.add("error-border");
-      messages.push("Merchant ID is required if Merchant ID Issuer is entered");
-    }
-  }
 
   // verify inputs and options have values
-  verifyValue(orgNameField, "please enter an organization name");
-  verifyValue(addressField, "Please enter an address");
-  verifyValue(cityField, "Please enter a city");
-  verifyOptionValue(stateField, "Please select a state");
-  verifyValue(zipcodeField, "Please enter a Zipcode");
+  verifyValue(orgNameField);
+  verifyValue(addressField);
+  verifyValue(cityField);
+  verifyOptionValue(stateField, "Please select a State");
+  verifyValue(zipcodeField);
   verifyOptionValue(
     merchantYesNoField,
     'Please select a value for "Has your organization used multiple Merchant ID numbers from 2004-2019?"'
   );
-  verifyValue(firstNameField, "Please enter a first name");
-  verifyValue(lastNameField, "Please enter a last name");
+
+  // check if merchants fields have value and verify
+  if (
+    merchantIdField.value ||
+    merchantIDIssuerField.value ||
+    startYearField.value ||
+    endYearField.value
+  ) {
+    verifyValue(merchantIdField);
+    verifyValue(merchantIDIssuerField);
+    verifyOptionValue(startYearField, "Please select Start year");
+    verifyOptionValue(endYearField, "Please select End year");
+  }
+
+  verifyValue(firstNameField);
+  verifyValue(lastNameField);
 
   if (verifyEmailField.value != emailField.value) {
     emailField.classList.add("error-border");
