@@ -1,4 +1,6 @@
 "use strict";
+
+// initialize form element variables
 var orgNameField = document.querySelector('input[name="Company"]');
 var addressField = document.querySelector('input[name="AddressLine1"]');
 var cityField = document.querySelector('input[name="City"]');
@@ -23,7 +25,8 @@ var merchantIDIssuerField = document.querySelector(
   'input[name="MerchantIDIssuer"]'
 );
 var signatureField = document.getElementById("signature");
-
+// var agreeRadio = document.getElementById("readAndAgree");
+// var signLaterRadio = document.getElementById("signLater");
 var form = document.getElementById("mainForm");
 
 var errorElement = document.getElementById("errors");
@@ -50,6 +53,24 @@ function verifyOptionValue(element, text) {
   } else {
     element.classList.remove("error-border");
   }
+}
+
+var radios = form.ServiceAgreement;
+// var prev = null;
+for (var i = 0; i < radios.length; i++) {
+  radios[i].addEventListener("change", function() {
+    // prev ? console.log(prev.value) : null;
+    // if (this !== prev) {
+    //   prev = this;
+    // }
+    // console.log(this.value);
+    if (this.value === "ReadAndAgree") {
+      signatureField.type = "text";
+    } else {
+      signatureField.value = "";
+      signatureField.type = "hidden";
+    }
+  });
 }
 
 form.addEventListener("submit", function(e) {
