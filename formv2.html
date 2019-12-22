@@ -1,4 +1,4 @@
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" />
+<link rel="stylesheet" href="./form.css" />
 
 <form
   name="brownstone-form"
@@ -503,34 +503,36 @@
         for immediate assistance.
       </p>
     </div>
-    <div class="flex-row">
+    <div id="agreeSection">
+      <div class="flex-row">
+        <input
+          type="radio"
+          name="ServiceAgreement"
+          value="ReadAndAgree"
+          class="input-select"
+          id="readAndAgree"
+        />
+        <span>I have read and agree to the Service Agreement</span>
+      </div>
       <input
-        type="radio"
-        name="ServiceAgreement"
-        value="ReadAndAgree"
-        class="input-select"
-        id="readAndAgree"
+        type="hidden"
+        name="Signature"
+        placeholder="Signature"
+        id="signature"
       />
-      <span>I have read and agree to the Service Agreement</span>
-    </div>
-    <input
-      type="hidden"
-      name="Signature"
-      placeholder="Signature"
-      id="signature"
-    />
-    <div class="flex-row">
-      <input
-        type="radio"
-        name="ServiceAgreement"
-        value="WillSignLater"
-        class="input-select"
-        id="signLater"
-      />
-      <span>
-        I will sign the Service Agreement later (we will send you a link via
-        email)
-      </span>
+      <div class="flex-row">
+        <input
+          type="radio"
+          name="ServiceAgreement"
+          value="WillSignLater"
+          class="input-select"
+          id="signLater"
+        />
+        <span>
+          I will sign the Service Agreement later (we will send you a link via
+          email)
+        </span>
+      </div>
     </div>
   </fieldset>
   <input type="hidden" name="ValidationCode" />
@@ -542,3 +544,5 @@
   <div id="errors"></div>
   <button type="submit" class="gform_button button">Sign Me Up!</button>
 </form>
+
+<script src="./form.js"></script>

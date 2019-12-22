@@ -24,16 +24,17 @@ var merchantIdField = document.querySelector('input[name="MerchantID"]');
 var merchantIDIssuerField = document.querySelector(
   'input[name="MerchantIDIssuer"]'
 );
-var signatureField = document.getElementById("signature");
-var agreeRadio = document.getElementById("readAndAgree");
-var signLaterRadio = document.getElementById("signLater");
 var form = document.getElementById("mainForm");
-
+var signatureField = document.getElementById("signature");
+var radios = form.ServiceAgreement;
+var agreeDiv = document.getElementById("agreeSection");
+// var agreeRadio = document.getElementById("readAndAgree");
+// var signLaterRadio = document.getElementById("signLater");
 var errorElement = document.getElementById("errors");
 var messages = [];
-
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
+// function to verify there is a value for input fields
 function verifyValue(element, text) {
   if (element.value === "" || element.value == null) {
     element.classList.add("error-border");
@@ -43,6 +44,7 @@ function verifyValue(element, text) {
   }
 }
 
+// funciton to verify there is a value for option fields
 function verifyOptionValue(element, text) {
   if (
     element.options[element.selectedIndex].value === "" ||
@@ -55,8 +57,8 @@ function verifyOptionValue(element, text) {
   }
 }
 
-var radios = form.ServiceAgreement;
-var prev = null;
+// loop through radios and show signature field if checked
+// var prev = null;
 for (var i = 0; i < radios.length; i++) {
   radios[i].addEventListener("change", function() {
     // prev ? console.log(prev.value) : null;
@@ -73,10 +75,14 @@ for (var i = 0; i < radios.length; i++) {
   });
 }
 
+// handle form submission
 form.addEventListener("submit", function(e) {
+  // ensure the messages is cleared on each submit and remove error borders
   messages = [];
   merchantIDIssuerField.classList.remove("error-border");
   merchantIdField.classList.remove("error-border");
+
+  // check if merchants fields have value and verify
   if (merchantIdField.value) {
     if (
       merchantIDIssuerField.value === "" ||
@@ -94,6 +100,7 @@ form.addEventListener("submit", function(e) {
     }
   }
 
+  // verify inputs and options have values
   verifyValue(orgNameField, "please enter an organization name");
   verifyValue(addressField, "Please enter an address");
   verifyValue(cityField, "Please enter a city");
@@ -142,6 +149,18 @@ form.addEventListener("submit", function(e) {
     } else {
       secondaryEmailField.classList.remove("error-border");
     }
+  }
+
+  // check if radio is checked
+  if (radios.value === "" || radios.value == null) {
+    messages.push("please agree to the service agreement");
+    agreeDiv.classList.add("error-border");
+  } else {
+    agreeDiv.classList.remove("error-border");
+  }
+
+  if (radios.value === "ReadAndAgree") {
+    verifyValue(signatureField, "Please enter a Signature");
   }
 
   if (messages.length > 0) {
