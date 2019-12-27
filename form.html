@@ -20,13 +20,17 @@
     />
 
     <label class="form-label">Registered address</label>
-    <input
-      type="text"
-      name="AddressLine1"
-      placeholder="Address line 1"
-      class="input-field"
-      maxlength="50"
-    />
+    <div id="locationField">
+      <input
+        id="autocomplete"
+        type="text"
+        name="AddressLine1"
+        placeholder="Address line 1"
+        class="input-field"
+        maxlength="50"
+        onFocus="geolocate()"
+      />
+    </div>
 
     <input
       type="text"
@@ -42,9 +46,10 @@
         name="City"
         placeholder="City"
         class="input-field one-third"
+        id="city"
       />
 
-      <select name="State" class="select-field one-third">
+      <select name="State" class="select-field one-third" id="state">
         <option value="" selected="selected">State</option>
         <option>Alabama</option>
         <option>Alaska</option>
@@ -105,6 +110,7 @@
         placeholder="Zipcode"
         maxlength="10"
         class="input-field one-third"
+        id="zipcode"
       />
     </div>
 
@@ -570,3 +576,8 @@
 </form>
 
 <script src="./form.js"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBStuhvUnnDIoaGQuYYPThz5w0yVZVbYKI&libraries=places&callback=initAutocomplete"
+  async
+  defer
+></script>
