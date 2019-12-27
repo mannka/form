@@ -171,11 +171,16 @@ form.addEventListener("submit", function(e) {
       errorElement.appendChild(ul);
     });
     // errorElement.innerText = messages.join(", ");
-  }
+  } else {
+    console.log("made it");
 
-  window.location.replace(
-    "https://brownstonerecovery.com/thanks-your-form-has-been-submitted/"
-  );
+    window.location.replace(
+      "https://brownstonerecovery.com/thanks-your-form-has-been-submitted/"
+    );
+    window.location.href(
+      "https://brownstonerecovery.com/thanks-your-form-has-been-submitted/"
+    );
+  }
 });
 
 var placeSearch, autocomplete;
