@@ -36,6 +36,11 @@ var errorElement = document.getElementById("errors");
 var messages = [];
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
+function redirect() {
+  window.location.replace("http://stackoverflow.com");
+  return false;
+}
+
 // function to verify there is a value for input fields
 function verifyValue(element) {
   if (element.value === "" || element.value == null) {
@@ -171,6 +176,9 @@ form.addEventListener("submit", function(e) {
       errorElement.appendChild(ul);
     });
     // errorElement.innerText = messages.join(", ");
+  } else {
+    redirect();
+    return false;
   }
 });
 
