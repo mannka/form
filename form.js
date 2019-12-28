@@ -266,4 +266,6 @@ function geolocate() {
   }
 }
 
+google.maps.event.addDomListener(window, "load", initAutocomplete);
+
 console.log("loaded");
