@@ -30,11 +30,10 @@ var form = document.getElementById("mainForm");
 var signatureField = document.getElementById("signature");
 var radios = form.ServiceAgreement;
 var agreeDiv = document.getElementById("agreeSection");
-// var agreeRadio = document.getElementById("readAndAgree");
-// var signLaterRadio = document.getElementById("signLater");
 var errorElement = document.getElementById("errors");
 var messages = [];
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+var refCode = document.getElementById("refCode");
 
 function redirect() {
   window.location.replace("http://stackoverflow.com");
@@ -84,6 +83,23 @@ for (var i = 0; i < radios.length; i++) {
 
 // handle form submission
 form.addEventListener("submit", function(e) {
+  fetch(
+    `https://43k8h1qbx6.execute-api.us-west-1.amazonaws.com/default/BRG-referral-code-check?refcode=${refCode.value}`,
+    {
+      headers: {
+        "x-api-key": "gFZ52tAaHi9nr2diLWCwYi3qctC0x309lOdd7IY4"
+      },
+      mode: "no-cors"
+    }
+  )
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
   // ensure the messages is cleared on each submit and remove error borders
   messages = [];
 
