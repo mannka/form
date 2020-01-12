@@ -327,16 +327,7 @@
         class="input-field"
         id="refCode"
       />
-      <!-- <textarea
-      name="ServiceAgreementText"
-      rows="6"
-      cols="60"
-      readonly
-      class="text-field"
-    >
-    Text will be replaced with actual agreement.  Lorem ipsum dolor sit amet consectetur adipiscing elit commodo sed accumsan proin quis praesent, eleifend ante ultrices congue mattis aptent lacus scelerisque aenean vivamus augue feugiat. Arcu tempus facilisis enim tempor habitasse ullamcorper sollicitudin sapien class montes lacinia pellentesque, ac litora orci consequat sodales elementum mauris velit urna volutpat eleifend aptent, ad vestibulum sagittis imperdiet fusce id vel gravida convallis nibh dictum. Arcu eleifend torquent natoque egestas fringilla purus commodo netus, semper enim sem euismod eget gravida malesuada, placerat cras ad class faucibus penatibus lacinia.
-    Venenatis imperdiet habitant facilisis ac sem erat id pellentesque vehicula, velit scelerisque mauris mollis ultrices aliquam sociosqu purus, orci aenean nam molestie turpis eget iaculis at. Luctus eu torquent dictum primis a vulputate proin interdum pulvinar, nostra ultricies integer et vel tortor rutrum dignissim augue, sollicitudin tempor scelerisque nam sed neque quam arcu. Mattis gravida vitae hac commodo pulvinar ac metus, curabitur nec convallis pharetra inceptos dui ridiculus mauris, orci risus lacus nulla praesent curae.
-    </textarea> -->
+      <div style="margin-bottom: 5px" id="refMsg"></div>
       <div contenteditable="true" class="agreement-message">
         <p>
           In connection with the case, In Re Payment Card Interchange Fee and
@@ -489,9 +480,10 @@
         <p>
           As full and complete compensation for the Services (including any
           expenses incurred by Service Provider in connection with providing the
-          Services), Service Provider will be entitled to retain 30.0 percent of
-          the Recovery Amount and, if applicable, 30.0 percent of the Residual
-          Amount actually paid with respect to each Claim.
+          Services), Service Provider will be entitled to retain
+          <span id="30-1">30.0</span> percent of the Recovery Amount and, if
+          applicable, <span id="30-2">30.0</span> percent of the Residual Amount
+          actually paid with respect to each Claim.
         </p>
         <p>
           No amendment of this agreement will be enforceable unless such
