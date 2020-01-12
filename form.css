@@ -163,6 +163,10 @@ fieldset {
   /* padding: 15px; */
 }
 
+.ein {
+  max-width: 150px;
+}
+
 #errors ul {
   color: #d8000c;
   background-color: #ffd2d2;
