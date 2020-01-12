@@ -1,8 +1,9 @@
+<link rel="stylesheet" href="./form.css" />
 <div id="rootForm">
   <form
     name="brownstone-form"
     class="form-flex"
-    action="https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=2e3f5943eb03637789bd3282b03fdfa0?scope=creatorapi"
+    action="https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=6b268abf0c8fe5c13d93095db2556e2b?scope=creatorapi"
     method="post"
     id="mainForm"
   >
@@ -116,18 +117,21 @@
       <div class="group flex-row flex-wrap">
         <div class="one-third">
           <div class="flex-row">
-            <label class="form-label">Tax ID</label>
+            <label class="form-label"
+              >Employer Identification Number (EIN)</label
+            >
             <div class="tooltip dot">
               ?<span class="tooltiptext"
-                >orem ipsum dolor sit amet consectetur adipiscing elit commodo
-                sed accumsan proin</span
+                >The Employer Identification Number is issued by the Internal
+                Revenue Service. This is also known as the Federal Tax ID
+                number. Enter with no dashes or spaces like 123456789</span
               >
             </div>
           </div>
 
           <input
             type="text"
-            name="TaxIDNumber"
+            name="EIN"
             placeholder="123456789"
             maxlength="9"
             class="input-field"
@@ -148,8 +152,7 @@
       </div>
 
       <p id="infoClaim">
-        Brownstone will send details via email on how to provide this
-        information for your claim.
+        Current Payment Processor & Merchant ID
       </p>
 
       <div class="group flex-row flex-wrap">
@@ -169,7 +172,7 @@
           >Merchant ID Issued By</label
         > -->
           <input
-            placeholder="Merchant ID issued by"
+            placeholder="Issuing Payment Processor"
             type="text"
             name="MerchantIDIssuer"
             maxlength="50"
@@ -196,6 +199,7 @@
             <option>2017</option>
             <option>2018</option>
             <option>2019</option>
+            <option>2020</option>
           </select>
         </div>
 
@@ -569,3 +573,5 @@
     <button type="submit" class="gform_button button">Sign Me Up!</button>
   </form>
 </div>
+
+<script src="form.js"></script>
