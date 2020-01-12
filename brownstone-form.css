@@ -76,3 +76,12 @@ fieldset {
 #idQuestion {
   margin-bottom: 0 !important;
 }
+
+.thankYouHeader {
+  color: white;
+  font-size: 3rem;
+}
+
+.thankYouMessage {
+  font-size: 1.2rem;
+}

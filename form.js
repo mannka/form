@@ -34,6 +34,9 @@ var errorElement = document.getElementById("errors");
 var messages = [];
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 var refCode = document.getElementById("refCode");
+var refMsg = document.getElementById("refMsg");
+var ref1 = document.getElementById("30-1");
+var ref2 = document.getElementById("30-2");
 
 // function to verify there is a value for input fields
 function verifyValue(element) {
@@ -76,6 +79,36 @@ for (var i = 0; i < radios.length; i++) {
   });
 }
 
+refCode.addEventListener("blur", event => {
+  fetch(
+    `https://43k8h1qbx6.execute-api.us-west-1.amazonaws.com/default/BRG-referral-code-check?refcode=${refCode.value}`,
+    {
+      headers: {
+        "x-api-key": "gFZ52tAaHi9nr2diLWCwYi3qctC0x309lOdd7IY4"
+      }
+    }
+  )
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+
+      if (data.refcode === "" || data.refcode == null) {
+      } else {
+        if (data.percent == "not found") {
+          refMsg.innerHTML = "Referral code not valid";
+        } else {
+          refMsg.innerHTML = "Referral code applied";
+          ref1.innerHTML = data.percent;
+          ref2.innerHTML = data.percent;
+        }
+      }
+    })
+    .catch(err => {
+      console.log("there was an error");
+      console.log(err);
+    });
+});
+
 // handle form submission
 form.addEventListener("submit", function(e) {
   e.preventDefault();
@@ -89,135 +122,119 @@ form.addEventListener("submit", function(e) {
 
   console.log(fetchValue);
 
-  fetch(
-    `https://43k8h1qbx6.execute-api.us-west-1.amazonaws.com/default/BRG-referral-code-check?refcode=${fetchValue}`,
-    {
-      headers: {
-        "x-api-key": "gFZ52tAaHi9nr2diLWCwYi3qctC0x309lOdd7IY4"
-      }
+  // ensure the messages is cleared on each submit and remove error borders
+  messages = [];
+
+  // verify inputs and options have values
+  verifyValue(orgNameField);
+  verifyValue(addressField);
+  verifyValue(cityField);
+  verifyOptionValue(stateField, "Please select a State");
+  verifyValue(zipcodeField);
+  verifyOptionValue(
+    merchantYesNoField,
+    'Please select a value for "Has your organization used multiple Merchant ID numbers from 2004-2019?"'
+  );
+
+  // check if merchants fields have value and verify
+  if (
+    merchantIdField.value ||
+    merchantIDIssuerField.value ||
+    startYearField.value ||
+    endYearField.value
+  ) {
+    verifyValue(merchantIdField);
+    verifyValue(merchantIDIssuerField);
+    verifyOptionValue(startYearField, "Please select Start year");
+    verifyOptionValue(endYearField, "Please select End year");
+  }
+
+  verifyValue(firstNameField);
+  verifyValue(lastNameField);
+
+  if (verifyEmailField.value != emailField.value) {
+    emailField.classList.add("error-border");
+    verifyEmailField.classList.add("error-border");
+    messages.push("Email address does not match");
+  } else {
+    emailField.classList.remove("error-border");
+    verifyEmailField.classList.remove("error-border");
+  }
+
+  if (
+    emailField.value === "" ||
+    emailField.value == null ||
+    !emailField.value.match(mailformat)
+  ) {
+    emailField.classList.add("error-border");
+    messages.push("Please enter a valid email");
+  } else {
+    emailField.classList.remove("error-border");
+  }
+
+  if (!secondaryEmailField.value.length == 0) {
+    if (verifySecondaryEmailField.value != secondaryEmailField.value) {
+      secondaryEmailField.classList.add("error-border");
+      verifySecondaryEmailField.classList.add("error-border");
+      messages.push("Secondary email address does not match");
+    } else {
+      secondaryEmailField.classList.remove("error-border");
+      verifySecondaryEmailField.classList.remove("error-border");
     }
-  )
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      // ensure the messages is cleared on each submit and remove error borders
-      messages = [];
 
-      // verify inputs and options have values
-      verifyValue(orgNameField);
-      verifyValue(addressField);
-      verifyValue(cityField);
-      verifyOptionValue(stateField, "Please select a State");
-      verifyValue(zipcodeField);
-      verifyOptionValue(
-        merchantYesNoField,
-        'Please select a value for "Has your organization used multiple Merchant ID numbers from 2004-2019?"'
-      );
+    if (!secondaryEmailField.value.match(mailformat)) {
+      secondaryEmailField.classList.add("error-border");
+      messages.push("Please enter a valid secondary email");
+    } else {
+      secondaryEmailField.classList.remove("error-border");
+    }
+  }
 
-      // check if merchants fields have value and verify
-      if (
-        merchantIdField.value ||
-        merchantIDIssuerField.value ||
-        startYearField.value ||
-        endYearField.value
-      ) {
-        verifyValue(merchantIdField);
-        verifyValue(merchantIDIssuerField);
-        verifyOptionValue(startYearField, "Please select Start year");
-        verifyOptionValue(endYearField, "Please select End year");
-      }
+  // check if radio is checked
+  if (radios.value === "" || radios.value == null) {
+    messages.push("please agree to the service agreement");
+    agreeDiv.classList.add("error-border");
+  } else {
+    agreeDiv.classList.remove("error-border");
+  }
 
-      verifyValue(firstNameField);
-      verifyValue(lastNameField);
+  if (radios.value === "ReadAndAgree") {
+    verifyValue(signatureField, "Please enter a Signature");
+  }
 
-      if (verifyEmailField.value != emailField.value) {
-        emailField.classList.add("error-border");
-        verifyEmailField.classList.add("error-border");
-        messages.push("Email address does not match");
-      } else {
-        emailField.classList.remove("error-border");
-        verifyEmailField.classList.remove("error-border");
-      }
-
-      if (
-        emailField.value === "" ||
-        emailField.value == null ||
-        !emailField.value.match(mailformat)
-      ) {
-        emailField.classList.add("error-border");
-        messages.push("Please enter a valid email");
-      } else {
-        emailField.classList.remove("error-border");
-      }
-
-      if (!secondaryEmailField.value.length == 0) {
-        if (verifySecondaryEmailField.value != secondaryEmailField.value) {
-          secondaryEmailField.classList.add("error-border");
-          verifySecondaryEmailField.classList.add("error-border");
-          messages.push("Secondary email address does not match");
-        } else {
-          secondaryEmailField.classList.remove("error-border");
-          verifySecondaryEmailField.classList.remove("error-border");
-        }
-
-        if (!secondaryEmailField.value.match(mailformat)) {
-          secondaryEmailField.classList.add("error-border");
-          messages.push("Please enter a valid secondary email");
-        } else {
-          secondaryEmailField.classList.remove("error-border");
-        }
-      }
-
-      // check if radio is checked
-      if (radios.value === "" || radios.value == null) {
-        messages.push("please agree to the service agreement");
-        agreeDiv.classList.add("error-border");
-      } else {
-        agreeDiv.classList.remove("error-border");
-      }
-
-      if (radios.value === "ReadAndAgree") {
-        verifyValue(signatureField, "Please enter a Signature");
-      }
-
-      console.log(messages);
-
-      if (messages.length > 0) {
-        e.preventDefault();
-        errorElement.innerHTML = " ";
-        var ul = document.createElement("ul");
-        messages.map(function(error) {
-          var li = document.createElement("li");
-          var text = document.createTextNode(error);
-          li.appendChild(text);
-          ul.appendChild(li);
-          errorElement.appendChild(ul);
-        });
-        // errorElement.innerText = messages.join(", ");
-      } else {
-        form.submit();
-        var div = document.createElement("div");
-        var h2 = document.createElement("h2");
-        var thankYou = document.createTextNode("Thank You");
-        var p = document.createElement("p");
-        var paragraph = document.createTextNode(
-          "Your form has been successfully submitted. You will receive an email shortly with the next steps on completing the contract."
-        );
-        var rootDiv = document.getElementById("rootForm");
-        p.appendChild(paragraph);
-        h2.appendChild(thankYou);
-        h2.style.cssText = "text-align: center;";
-        div.appendChild(h2);
-        div.appendChild(p);
-        div.style.cssText = "text-align: center;";
-        rootDiv.innerHTML = "";
-        rootDiv.appendChild(div);
-      }
-    })
-    .catch(err => {
-      console.log("there was an error");
-      console.log(err);
+  if (messages.length > 0) {
+    e.preventDefault();
+    errorElement.innerHTML = " ";
+    var ul = document.createElement("ul");
+    messages.map(function(error) {
+      var li = document.createElement("li");
+      var text = document.createTextNode(error);
+      li.appendChild(text);
+      ul.appendChild(li);
+      errorElement.appendChild(ul);
     });
+    // errorElement.innerText = messages.join(", ");
+  } else {
+    form.submit();
+    var div = document.createElement("div");
+    var h2 = document.createElement("h2");
+    var thankYou = document.createTextNode("Thank You");
+    var p = document.createElement("p");
+    var paragraph = document.createTextNode(
+      "Your form has been successfully submitted. You will receive an email shortly with the next steps on completing the contract."
+    );
+    var rootDiv = document.getElementById("rootForm");
+    p.appendChild(paragraph);
+    p.classList.add("thankYouMessage");
+    h2.appendChild(thankYou);
+    h2.style.cssText = "text-align: center;font-size: 3rem;padding: 2rem";
+    h2.classList.add("thankYouHeader");
+    div.appendChild(h2);
+    div.appendChild(p);
+    div.style.cssText = "text-align: center;";
+    rootDiv.innerHTML = "";
+    rootDiv.appendChild(div);
+  }
 
   var placeSearch, autocomplete;
 
