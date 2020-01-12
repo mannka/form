@@ -30,11 +30,10 @@ var form = document.getElementById("mainForm");
 var signatureField = document.getElementById("signature");
 var radios = form.ServiceAgreement;
 var agreeDiv = document.getElementById("agreeSection");
-// var agreeRadio = document.getElementById("readAndAgree");
-// var signLaterRadio = document.getElementById("signLater");
 var errorElement = document.getElementById("errors");
 var messages = [];
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+var refCode = document.getElementById("refCode");
 
 // function to verify there is a value for input fields
 function verifyValue(element) {
@@ -79,202 +78,240 @@ for (var i = 0; i < radios.length; i++) {
 
 // handle form submission
 form.addEventListener("submit", function(e) {
-  // ensure the messages is cleared on each submit and remove error borders
-  messages = [];
+  e.preventDefault();
+  var fetchValue;
 
-  // verify inputs and options have values
-  verifyValue(orgNameField);
-  verifyValue(addressField);
-  verifyValue(cityField);
-  verifyOptionValue(stateField, "Please select a State");
-  verifyValue(zipcodeField);
-  verifyOptionValue(
-    merchantYesNoField,
-    'Please select a value for "Has your organization used multiple Merchant ID numbers from 2004-2019?"'
-  );
-
-  // check if merchants fields have value and verify
-  if (
-    merchantIdField.value ||
-    merchantIDIssuerField.value ||
-    startYearField.value ||
-    endYearField.value
-  ) {
-    verifyValue(merchantIdField);
-    verifyValue(merchantIDIssuerField);
-    verifyOptionValue(startYearField, "Please select Start year");
-    verifyOptionValue(endYearField, "Please select End year");
-  }
-
-  verifyValue(firstNameField);
-  verifyValue(lastNameField);
-
-  if (verifyEmailField.value != emailField.value) {
-    emailField.classList.add("error-border");
-    verifyEmailField.classList.add("error-border");
-    messages.push("Email address does not match");
+  if (refCode.value == null || refCode.value == "") {
+    fetchValue = "null";
   } else {
-    emailField.classList.remove("error-border");
-    verifyEmailField.classList.remove("error-border");
+    fetchValue = refCode.value;
   }
 
-  if (
-    emailField.value === "" ||
-    emailField.value == null ||
-    !emailField.value.match(mailformat)
-  ) {
-    emailField.classList.add("error-border");
-    messages.push("Please enter a valid email");
-  } else {
-    emailField.classList.remove("error-border");
-  }
+  console.log(fetchValue);
 
-  if (!secondaryEmailField.value.length == 0) {
-    if (verifySecondaryEmailField.value != secondaryEmailField.value) {
-      secondaryEmailField.classList.add("error-border");
-      verifySecondaryEmailField.classList.add("error-border");
-      messages.push("Secondary email address does not match");
-    } else {
-      secondaryEmailField.classList.remove("error-border");
-      verifySecondaryEmailField.classList.remove("error-border");
+  fetch(
+    `https://43k8h1qbx6.execute-api.us-west-1.amazonaws.com/default/BRG-referral-code-check?refcode=${fetchValue}`,
+    {
+      headers: {
+        "x-api-key": "gFZ52tAaHi9nr2diLWCwYi3qctC0x309lOdd7IY4"
+      }
     }
+  )
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // ensure the messages is cleared on each submit and remove error borders
+      messages = [];
 
-    if (!secondaryEmailField.value.match(mailformat)) {
-      secondaryEmailField.classList.add("error-border");
-      messages.push("Please enter a valid secondary email");
-    } else {
-      secondaryEmailField.classList.remove("error-border");
-    }
-  }
+      // verify inputs and options have values
+      verifyValue(orgNameField);
+      verifyValue(addressField);
+      verifyValue(cityField);
+      verifyOptionValue(stateField, "Please select a State");
+      verifyValue(zipcodeField);
+      verifyOptionValue(
+        merchantYesNoField,
+        'Please select a value for "Has your organization used multiple Merchant ID numbers from 2004-2019?"'
+      );
 
-  // check if radio is checked
-  if (radios.value === "" || radios.value == null) {
-    messages.push("please agree to the service agreement");
-    agreeDiv.classList.add("error-border");
-  } else {
-    agreeDiv.classList.remove("error-border");
-  }
+      // check if merchants fields have value and verify
+      if (
+        merchantIdField.value ||
+        merchantIDIssuerField.value ||
+        startYearField.value ||
+        endYearField.value
+      ) {
+        verifyValue(merchantIdField);
+        verifyValue(merchantIDIssuerField);
+        verifyOptionValue(startYearField, "Please select Start year");
+        verifyOptionValue(endYearField, "Please select End year");
+      }
 
-  if (radios.value === "ReadAndAgree") {
-    verifyValue(signatureField, "Please enter a Signature");
-  }
+      verifyValue(firstNameField);
+      verifyValue(lastNameField);
 
-  if (messages.length > 0) {
-    e.preventDefault();
-    errorElement.innerHTML = " ";
-    var ul = document.createElement("ul");
-    messages.map(function(error) {
-      var li = document.createElement("li");
-      var text = document.createTextNode(error);
-      li.appendChild(text);
-      ul.appendChild(li);
-      errorElement.appendChild(ul);
+      if (verifyEmailField.value != emailField.value) {
+        emailField.classList.add("error-border");
+        verifyEmailField.classList.add("error-border");
+        messages.push("Email address does not match");
+      } else {
+        emailField.classList.remove("error-border");
+        verifyEmailField.classList.remove("error-border");
+      }
+
+      if (
+        emailField.value === "" ||
+        emailField.value == null ||
+        !emailField.value.match(mailformat)
+      ) {
+        emailField.classList.add("error-border");
+        messages.push("Please enter a valid email");
+      } else {
+        emailField.classList.remove("error-border");
+      }
+
+      if (!secondaryEmailField.value.length == 0) {
+        if (verifySecondaryEmailField.value != secondaryEmailField.value) {
+          secondaryEmailField.classList.add("error-border");
+          verifySecondaryEmailField.classList.add("error-border");
+          messages.push("Secondary email address does not match");
+        } else {
+          secondaryEmailField.classList.remove("error-border");
+          verifySecondaryEmailField.classList.remove("error-border");
+        }
+
+        if (!secondaryEmailField.value.match(mailformat)) {
+          secondaryEmailField.classList.add("error-border");
+          messages.push("Please enter a valid secondary email");
+        } else {
+          secondaryEmailField.classList.remove("error-border");
+        }
+      }
+
+      // check if radio is checked
+      if (radios.value === "" || radios.value == null) {
+        messages.push("please agree to the service agreement");
+        agreeDiv.classList.add("error-border");
+      } else {
+        agreeDiv.classList.remove("error-border");
+      }
+
+      if (radios.value === "ReadAndAgree") {
+        verifyValue(signatureField, "Please enter a Signature");
+      }
+
+      console.log(messages);
+
+      if (messages.length > 0) {
+        e.preventDefault();
+        errorElement.innerHTML = " ";
+        var ul = document.createElement("ul");
+        messages.map(function(error) {
+          var li = document.createElement("li");
+          var text = document.createTextNode(error);
+          li.appendChild(text);
+          ul.appendChild(li);
+          errorElement.appendChild(ul);
+        });
+        // errorElement.innerText = messages.join(", ");
+      } else {
+        form.submit();
+        var div = document.createElement("div");
+        var h2 = document.createElement("h2");
+        var thankYou = document.createTextNode("Thank You");
+        var p = document.createElement("p");
+        var paragraph = document.createTextNode(
+          "Your form has been successfully submitted. You will receive an email shortly with the next steps on completing the contract."
+        );
+        var rootDiv = document.getElementById("rootForm");
+        p.appendChild(paragraph);
+        h2.appendChild(thankYou);
+        h2.style.cssText = "text-align: center;";
+        div.appendChild(h2);
+        div.appendChild(p);
+        div.style.cssText = "text-align: center;";
+        rootDiv.innerHTML = "";
+        rootDiv.appendChild(div);
+      }
+    })
+    .catch(err => {
+      console.log("there was an error");
+      console.log(err);
     });
-    // errorElement.innerText = messages.join(", ");
-  } else {
-    console.log("made it");
 
-    window.location.replace(
-      "https://brownstonerecovery.com/thanks-your-form-has-been-submitted/"
+  var placeSearch, autocomplete;
+
+  var componentForm = {
+    // street_number: "short_name",
+    // route: "long_name"
+    // locality: "long_name",
+    // administrative_area_level_1: "short_name",
+    // country: "long_name",
+    // postal_code: "short_name"
+  };
+
+  function initAutocomplete() {
+    // Create the autocomplete object, restricting the search predictions to
+    // geographical location types.
+    autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById("autocomplete"),
+      { types: ["geocode"] }
     );
-    window.location.href(
-      "https://brownstonerecovery.com/thanks-your-form-has-been-submitted/"
-    );
-  }
-});
 
-var placeSearch, autocomplete;
+    // Avoid paying for data that you don't need by restricting the set of
+    // place fields that are returned to just the address components.
+    autocomplete.setFields(["address_component"]);
 
-var componentForm = {
-  // street_number: "short_name",
-  // route: "long_name"
-  // locality: "long_name",
-  // administrative_area_level_1: "short_name",
-  // country: "long_name",
-  // postal_code: "short_name"
-};
-
-function initAutocomplete() {
-  // Create the autocomplete object, restricting the search predictions to
-  // geographical location types.
-  autocomplete = new google.maps.places.Autocomplete(
-    document.getElementById("autocomplete"),
-    { types: ["geocode"] }
-  );
-
-  // Avoid paying for data that you don't need by restricting the set of
-  // place fields that are returned to just the address components.
-  autocomplete.setFields(["address_component"]);
-
-  // When the user selects an address from the drop-down, populate the
-  // address fields in the form.
-  autocomplete.addListener("place_changed", fillInAddress);
-}
-
-function fillInAddress() {
-  // Get the place details from the autocomplete object.
-  var place = autocomplete.getPlace();
-
-  for (var component in componentForm) {
-    document.getElementById(component).value = "";
-    document.getElementById(component).disabled = false;
+    // When the user selects an address from the drop-down, populate the
+    // address fields in the form.
+    autocomplete.addListener("place_changed", fillInAddress);
   }
 
-  // Get each component of the address from the place details,
-  // and then fill-in the corresponding field on the form.
-  for (var i = 0; i < place.address_components.length; i++) {
-    var addressType = place.address_components[i].types[0];
-    if (componentForm[addressType]) {
-      var val = place.address_components[i][componentForm[addressType]];
-      document.getElementById(addressType).value = val;
+  function fillInAddress() {
+    // Get the place details from the autocomplete object.
+    var place = autocomplete.getPlace();
+
+    for (var component in componentForm) {
+      document.getElementById(component).value = "";
+      document.getElementById(component).disabled = false;
+    }
+
+    // Get each component of the address from the place details,
+    // and then fill-in the corresponding field on the form.
+    for (var i = 0; i < place.address_components.length; i++) {
+      var addressType = place.address_components[i].types[0];
+      if (componentForm[addressType]) {
+        var val = place.address_components[i][componentForm[addressType]];
+        document.getElementById(addressType).value = val;
+      }
+    }
+
+    document.getElementById("autocomplete").value =
+      place.address_components[0]["long_name"] +
+      " " +
+      place.address_components[1]["long_name"];
+
+    document.getElementById("city").value =
+      place.address_components[3]["long_name"];
+
+    var val;
+
+    place.address_components.forEach(e => {
+      if (e.types[0] == "administrative_area_level_1") {
+        val = e.long_name;
+      } else if (e.types[0] == "postal_code") {
+        document.getElementById("zipcode").value = e.long_name;
+      }
+    });
+    var sel = document.getElementById("state");
+    var opts = sel.options;
+    for (var opt, j = 0; (opt = opts[j]); j++) {
+      if (opt.value == val) {
+        sel.selectedIndex = j;
+        break;
+      }
     }
   }
 
-  document.getElementById("autocomplete").value =
-    place.address_components[0]["long_name"] +
-    " " +
-    place.address_components[1]["long_name"];
-
-  document.getElementById("city").value =
-    place.address_components[3]["long_name"];
-
-  var val;
-
-  place.address_components.forEach(e => {
-    if (e.types[0] == "administrative_area_level_1") {
-      val = e.long_name;
-    } else if (e.types[0] == "postal_code") {
-      document.getElementById("zipcode").value = e.long_name;
-    }
-  });
-  var sel = document.getElementById("state");
-  var opts = sel.options;
-  for (var opt, j = 0; (opt = opts[j]); j++) {
-    if (opt.value == val) {
-      sel.selectedIndex = j;
-      break;
-    }
-  }
-}
-
-// Bias the autocomplete object to the user's geographical location,
-// as supplied by the browser's 'navigator.geolocation' object.
-function geolocate() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var geolocation = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-      var circle = new google.maps.Circle({
-        center: geolocation,
-        radius: position.coords.accuracy
+  // Bias the autocomplete object to the user's geographical location,
+  // as supplied by the browser's 'navigator.geolocation' object.
+  function geolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var geolocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var circle = new google.maps.Circle({
+          center: geolocation,
+          radius: position.coords.accuracy
+        });
+        autocomplete.setBounds(circle.getBounds());
       });
-      autocomplete.setBounds(circle.getBounds());
-    });
+    }
   }
-}
 
-google.maps.event.addDomListener(window, "load", initAutocomplete);
+  google.maps.event.addDomListener(window, "load", initAutocomplete);
 
-console.log("loaded");
+  console.log("loaded");
+});

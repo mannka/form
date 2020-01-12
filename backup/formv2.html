@@ -1,0 +1,576 @@
+<link rel="stylesheet" href="./form.css" />
+
+<form
+  name="brownstone-form"
+  class="form-flex"
+  action="https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=2e3f5943eb03637789bd3282b03fdfa0?scope=creatorapi"
+  method="post"
+  id="mainForm"
+>
+  <fieldset class="form-set">
+    <legend class="form-set-legend">Business / Organization</legend>
+
+    <input
+      type="text"
+      name="Company"
+      placeholder="Legal name of organization"
+      size="40"
+      maxlength="100"
+      class="input-field"
+    />
+
+    <label class="form-label">Registered address</label>
+    <div id="locationField">
+      <input
+        id="autocomplete"
+        type="text"
+        name="AddressLine1"
+        placeholder="Address line 1"
+        class="input-field"
+        maxlength="50"
+        onFocus="geolocate()"
+      />
+    </div>
+
+    <input
+      type="text"
+      name="AddressLine2"
+      placeholder="Address line 2"
+      class="input-field"
+      maxlength="50"
+    />
+
+    <div class="group flex-wrap flex-row">
+      <input
+        type="text"
+        name="City"
+        placeholder="City"
+        class="input-field one-third"
+        id="city"
+      />
+
+      <select name="State" class="select-field one-third" id="state">
+        <option value="" selected="selected">State</option>
+        <option>Alabama</option>
+        <option>Alaska</option>
+        <option>Arizona</option>
+        <option>Arkansas</option>
+        <option>California</option>
+        <option>Colorado</option>
+        <option>Connecticut</option>
+        <option>Delaware</option>
+        <option>District Of Columbia</option>
+        <option>Florida</option>
+        <option>Georgia</option>
+        <option>Hawaii</option>
+        <option>Idaho</option>
+        <option>Illinois</option>
+        <option>Indiana</option>
+        <option>Iowa</option>
+        <option>Kansas</option>
+        <option>Kentucky</option>
+        <option>Louisiana</option>
+        <option>Maine</option>
+        <option>Maryland</option>
+        <option>Massachusetts</option>
+        <option>Michigan</option>
+        <option>Minnesota</option>
+        <option>Mississippi</option>
+        <option>Missouri</option>
+        <option>Montana</option>
+        <option>Nebraska</option>
+        <option>Nevada</option>
+        <option>New Hampshire</option>
+        <option>New Jersey</option>
+        <option>New Mexico</option>
+        <option>New York</option>
+        <option>North Carolina</option>
+        <option>North Dakota</option>
+        <option>Ohio</option>
+        <option>Oklahoma</option>
+        <option>Oregon</option>
+        <option>Pennsylvania</option>
+        <option>Rhode Island</option>
+        <option>South Carolina</option>
+        <option>South Dakota</option>
+        <option>Tennessee</option>
+        <option>Texas</option>
+        <option>Utah</option>
+        <option>Vermont</option>
+        <option>Virginia</option>
+        <option>Washington</option>
+        <option>West Virginia</option>
+        <option>Wisconsin</option>
+        <option>Wyoming</option>
+      </select>
+
+      <input
+        type="text"
+        name="ZipCode"
+        placeholder="Zipcode"
+        maxlength="10"
+        class="input-field one-third"
+        id="zipcode"
+      />
+    </div>
+
+    <div class="group flex-row flex-wrap">
+      <div class="one-third">
+        <div class="flex-row">
+          <label class="form-label">Tax ID</label>
+          <div class="tooltip dot">
+            ?<span class="tooltiptext"
+              >orem ipsum dolor sit amet consectetur adipiscing elit commodo sed
+              accumsan proin</span
+            >
+          </div>
+        </div>
+
+        <input
+          type="text"
+          name="TaxIDNumber"
+          placeholder="123456789"
+          maxlength="9"
+          class="input-field"
+        />
+      </div>
+    </div>
+
+    <div class="group flex-row flex-wrap moreMID">
+      <label class="form-label half" id="labelIdQuestion"
+        >Has your organization used multiple Merchant ID numbers from
+        2004-2019?</label
+      >
+      <select name="MoreMIDs" class="select-field half" id="idQuestion">
+        <option value="" selected="selected">Choose...</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+    </div>
+
+    <p id="infoClaim">
+      Brownstone will send details via email on how to provide this information
+      for your claim.
+    </p>
+
+    <div class="group flex-row flex-wrap">
+      <div class="one-fourth-bigger">
+        <!-- <label for="MerchandID" class="form-label">Merchant ID</label> -->
+        <input
+          placeholder="Merchant ID"
+          type="text"
+          name="MerchantID"
+          maxlength="20"
+          class="input-field"
+        />
+      </div>
+
+      <div class="one-fourth-bigger">
+        <!-- <label for="MerchantIDIssuer" class="form-label"
+          >Merchant ID Issued By</label
+        > -->
+        <input
+          placeholder="Merchant ID issued by"
+          type="text"
+          name="MerchantIDIssuer"
+          maxlength="50"
+          class="input-field"
+        />
+      </div>
+
+      <div class="one-fourth-smaller">
+        <select name="MerchantIDStart">
+          <option value="" selected="selected">Start year</option>
+          <option>2004</option>
+          <option>2005</option>
+          <option>2006</option>
+          <option>2007</option>
+          <option>2008</option>
+          <option>2009</option>
+          <option>2010</option>
+          <option>2011</option>
+          <option>2012</option>
+          <option>2013</option>
+          <option>2014</option>
+          <option>2015</option>
+          <option>2016</option>
+          <option>2017</option>
+          <option>2018</option>
+          <option>2019</option>
+        </select>
+      </div>
+
+      <div class="one-fourth-smaller">
+        <select name="MerchantIDEnd">
+          <option value="" selected="selected">End year</option>
+          <option>2004</option>
+          <option>2005</option>
+          <option>2006</option>
+          <option>2007</option>
+          <option>2008</option>
+          <option>2009</option>
+          <option>2010</option>
+          <option>2011</option>
+          <option>2012</option>
+          <option>2013</option>
+          <option>2014</option>
+          <option>2015</option>
+          <option>2016</option>
+          <option>2017</option>
+          <option>2018</option>
+          <option>2019</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-set">
+    <legend class="form-set-legend">
+      Authorized Individual for this Organization
+    </legend>
+
+    <p>
+      Brownstone will rely on this information to communicate with you as we
+      work your claim.
+    </p>
+
+    <!-- <label class="form-label">Name</label> -->
+    <div class="group flex-row flex-wrap">
+      <input
+        type="text"
+        name="FirstName"
+        placeholder="First name"
+        maxlength="50"
+        class="input-field half"
+      />
+
+      <input
+        type="text"
+        name="LastName"
+        placeholder="Last name"
+        maxlength="50"
+        class="input-field half"
+      />
+    </div>
+
+    <div class="group flex-row flex-wrap">
+      <!-- <label for="Title" class="form-label label-title">Title</label> -->
+      <input
+        type="text"
+        name="Title"
+        placeholder="Title"
+        class="input-field half"
+      />
+
+      <!-- <label for="WorkPhone" class="form-label">Reliable phone number</label> -->
+      <input
+        type="tel"
+        name="WorkPhone"
+        placeholder="Phone ###-###-####"
+        maxlength="12"
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        class="input-field half"
+      />
+    </div>
+
+    <div class="group flex-row flex-wrap">
+      <input
+        type="email"
+        name="Email"
+        placeholder="Email address"
+        maxlength="50"
+        title="We will use this address to communicate with you about the settlement."
+        class="input-field half"
+      />
+      <input
+        type="email"
+        name="Email2"
+        placeholder="Verify email address"
+        maxlength="50"
+        class="input-field half"
+      />
+    </div>
+
+    <div class="group flex-row flex-wrap">
+      <div class="half tooltip-parent-email">
+        <input
+          type="email"
+          name="SecondaryEmail"
+          placeholder="Secondary email"
+          maxlength="50"
+          class="input-field"
+        />
+        <div class="tooltip dot dot-email">
+          ?<span class="tooltiptext"
+            >If provided, Brownstone will email updates to this address in
+            addition to the email of the Authorized Individual</span
+          >
+        </div>
+      </div>
+      <input
+        type="email"
+        name="SecondaryEmail2"
+        placeholder="Verify secondary email"
+        maxlength="50"
+        class="input-field half"
+      />
+    </div>
+    <br />
+  </fieldset>
+
+  <fieldset>
+    <legend>Service Agreement</legend>
+    <input
+      type="text"
+      name="ReferralCode"
+      placeholder="Referral Code"
+      maxlength="20"
+      class="input-field"
+    />
+    <!-- <textarea
+      name="ServiceAgreementText"
+      rows="6"
+      cols="60"
+      readonly
+      class="text-field"
+    >
+    Text will be replaced with actual agreement.  Lorem ipsum dolor sit amet consectetur adipiscing elit commodo sed accumsan proin quis praesent, eleifend ante ultrices congue mattis aptent lacus scelerisque aenean vivamus augue feugiat. Arcu tempus facilisis enim tempor habitasse ullamcorper sollicitudin sapien class montes lacinia pellentesque, ac litora orci consequat sodales elementum mauris velit urna volutpat eleifend aptent, ad vestibulum sagittis imperdiet fusce id vel gravida convallis nibh dictum. Arcu eleifend torquent natoque egestas fringilla purus commodo netus, semper enim sem euismod eget gravida malesuada, placerat cras ad class faucibus penatibus lacinia.
+    Venenatis imperdiet habitant facilisis ac sem erat id pellentesque vehicula, velit scelerisque mauris mollis ultrices aliquam sociosqu purus, orci aenean nam molestie turpis eget iaculis at. Luctus eu torquent dictum primis a vulputate proin interdum pulvinar, nostra ultricies integer et vel tortor rutrum dignissim augue, sollicitudin tempor scelerisque nam sed neque quam arcu. Mattis gravida vitae hac commodo pulvinar ac metus, curabitur nec convallis pharetra inceptos dui ridiculus mauris, orci risus lacus nulla praesent curae.
+    </textarea> -->
+    <div contenteditable="true" class="agreement-message">
+      <p>
+        In connection with the case, In Re Payment Card Interchange Fee and
+        Merchant Discount Antitrust Litigation (the
+        <strong>“Visa/MasterCard Settlement”</strong>) or (the
+        <strong>“Interchange Fee Settlement”</strong>), Brownstone Recovery
+        Group, Inc. and its agents and representatives (collectively,
+        <strong>“Service Provider”</strong>) will provide to merchants the
+        following claim recovery services (collectively, the
+        <strong>“Services”</strong>):
+      </p>
+      <ol>
+        <li>
+          Request from the merchant, client information and documents reasonably
+          necessary to determine eligibility for, and to pursue recovery of, any
+          potential Interchange Fee Settlement claims.
+        </li>
+        <li>
+          Review, organize, and identify gaps in client-provided information and
+          documents.
+        </li>
+        <li>Determine claim eligibility.</li>
+        <li>
+          For each eligible claim (each, a <strong>“Claim”</strong>), prepare
+          applicable claim forms and supporting documentation.
+        </li>
+        <li>
+          Submit claim forms and supporting documentation for each Claim to the
+          Interchange Fee Settlement claims administrator.
+        </li>
+        <li>
+          Follow up with the claims administrator to obtain an estimate of the
+          amount payable with respect to each Claim (in each case, a
+          <strong>“Claim Estimate”</strong>), if not otherwise provided.
+        </li>
+        <li>
+          Evaluate the sufficiency of each Claim Estimate, on the basis of
+          information made available to Service Provider and to the extent
+          deemed appropriate by Service Provider.
+        </li>
+        <li>
+          To the extent permitted by the settlement agreement and commercially
+          reasonable, contest, challenge, and appeal the Claim Estimate or any
+          claim denial with respect to each Claim with a view to maximizing the
+          final determination of the recovery amount with respect to such Claim
+          (in each case, the <strong>“Recovery Amount”</strong>).
+        </li>
+        <li>
+          Obtain from the claims administrator payment of the Recovery Amount
+          with respect to each Claim as soon as practicable after the final
+          determination thereof is made.
+        </li>
+        <li>
+          If the claims administrator makes any pro rata or other additional
+          distribution of the remaining balance of any settlement fund to
+          settlement fund claimants, obtain from such claims administrator all
+          residual amounts payable with respect to each Claim in connection with
+          such distribution (in each case, the
+          <strong>“Residual Amount”</strong>).
+        </li>
+      </ol>
+      <p>The undersigned (<strong>“Client”</strong>) understands that:</p>
+      <ol>
+        <li>
+          Service Provider is not affiliated with any court, claims
+          administrator, class counsel, or other parties associated with any
+          Interchange Fee Settlement.
+        </li>
+        <li>
+          Service Provider is not a law firm and does not and will not give
+          Client any legal advice.
+        </li>
+        <li>
+          Service Provider does not guarantee that any potential claim will be
+          eligible, that any eligible claim will result in a recovery, that any
+          approved Claim will result in a Recovery Amount greater than the Claim
+          Estimate for such Claim, or that any approved Claim will result in any
+          Residual Amount payment.
+        </li>
+        <li>
+          Client is not required to avail itself of Service Provider’s Services,
+          but is instead entitled to pursue each Claim itself directly with the
+          claims administrator of each Interchange Fee Settlement.
+        </li>
+      </ol>
+      <p>
+        Notwithstanding the foregoing, Client has determined that, in light of
+        the time, effort, and cost it might take to pursue each Claim itself, as
+        well as Client’s relative lack of experience and knowledge pursuing
+        claims in the nature of those in connection with the Interchange Fee
+        Settlements, it is in Client’s best interest to engage Service Provider
+        to pursue all such claims on Client’s behalf.
+      </p>
+      <p>
+        In consideration of the foregoing and the other terms and conditions of
+        this agreement, the parties agree as follows:
+      </p>
+      <p>
+        Client hereby irrevocably appoints Service Provider as Client’s sole and
+        exclusive agent to pursue and recover each claim that Client may have
+        under the Interchange Fee Settlement. Client hereby irrevocably
+        authorizes Service Provider to act as the sole point of contact for any
+        court, claims administrator, class counsel, or other parties associated
+        with any Interchange Fee Settlement; to prepare, sign, and submit claims
+        forms with respect to each potential Claim; to receive, endorse,
+        negotiate, and deposit settlement checks with respect to any Claim; and
+        to take all other actions reasonably necessary to evaluate, prepare,
+        pursue, and maximize each potential Claim, and to respond to any audit
+        or inquiry with respect thereto. Client will reasonably cooperate with
+        Service Provider to facilitate all such actions. In furtherance of that
+        end, Client will:
+      </p>
+      <ol>
+        <li>
+          Provide to Service Provider all information in Client’s possession
+          that Service Provider reasonably determines is required to determine
+          the eligibility of, prepare, or submit any potential Claim, to
+          evaluate, contest, challenge, or appeal any Claim Estimate, to respond
+          to any Claim-related audit or inquiry, or otherwise to provide the
+          Services (collectively, “Claim Submission Data”). Upon Service
+          Provider’s request, Client will represent to Service Provider in
+          writing that the Claim Submission Data it provides to Service Provider
+          is accurate and complete.
+        </li>
+        <li>
+          Sign and have notarized from time to time such limited powers of
+          attorney as Service Provider may reasonably request.
+        </li>
+        <li>
+          Refrain from communicating directly with any court, claims
+          administrator, class counsel, or other parties associated with any
+          Interchange Fee Settlement.
+        </li>
+        <li>
+          Retain all Claim Submission Data relevant to its Claims until notified
+          that the Interchange Fee Settlement claim process is complete.
+        </li>
+        <li>
+          If any Recovery Amount or Residual Amount is, despite Service
+          Provider’s contrary instructions to any applicable claims
+          administrator, paid directly to Client, promptly pay to Service
+          Provider the full amount of the fees it would have been entitled
+          pursuant to this agreement to retain out of such Recovery Amount or
+          Residual Amount, as the case may be, if payment had been made directly
+          to Service Provider.
+        </li>
+      </ol>
+      <p>
+        As full and complete compensation for the Services (including any
+        expenses incurred by Service Provider in connection with providing the
+        Services), Service Provider will be entitled to retain 30.0 percent of
+        the Recovery Amount and, if applicable, 30.0 percent of the Residual
+        Amount actually paid with respect to each Claim.
+      </p>
+      <p>
+        No amendment of this agreement will be enforceable unless such amendment
+        is in writing, expressly refers to this agreement, and is signed by each
+        party.
+      </p>
+      <p>
+        This agreement will be governed exclusively by and construed and
+        enforced exclusively in accordance with the laws of New York. Each party
+        hereby submits to the exclusive jurisdiction of any court of New York
+        and any federal court of the United States of America, in either case,
+        sitting in the city and county of New York, and any appellate court
+        therefrom, over all legal actions relating to this agreement or the
+        Services.
+      </p>
+      <p>
+        The non-prevailing party in any legal action between the parties
+        relating to this agreement or the Services will promptly reimburse the
+        prevailing party for all reasonable attorneys’ fees and court costs
+        incurred by the prevailing party in connection with such legal action.
+      </p>
+      <p>
+        <span class="red"
+          >LEGAL DISCLAIMER: YOU CAN FILE YOURSELF WITHOUT USING A CLAIMS
+          RECOVERY SERVICE LIKE BROWNSTONE BY GOING TO
+          WWW.PAYMENTCARDSETTLEMENT.COM OR CALLING 1 (800) 625-6440.</span
+        ><br /><br />
+        Claim forms are not yet available from the Class Administrator. When
+        claim forms do become available, class members are not required to sign
+        up with any third-party service in order to participate in the monetary
+        relief, but may instead file their claim directly with the Class
+        Administrator. The claim form will inform most class members of their
+        actual or estimated interchange fees on which it is proposed their
+        claims will be paid. You may accept or dispute this estimate with the
+        opportunity to submit additional information. No-cost assistance will be
+        available from the Class Administrator and Class Counsel during the
+        claims-filing period. For additional information, class members may
+        visit www.paymentcardsettlement.com, the Court-approved website for this
+        case. If this option was not clearly explained to you, or if you have
+        any questions, please contact Brownstone Recovery Group at 877-202-2454
+        for immediate assistance.
+      </p>
+    </div>
+    <div id="agreeSection">
+      <div class="flex-row">
+        <input
+          type="radio"
+          name="ServiceAgreement"
+          value="ReadAndAgree"
+          class="input-select"
+          id="readAndAgree"
+        />
+        <span>I have read and agree to the Service Agreement</span>
+      </div>
+      <input
+        type="hidden"
+        name="Signature"
+        placeholder="Signature"
+        id="signature"
+      />
+      <div class="flex-row">
+        <input
+          type="radio"
+          name="ServiceAgreement"
+          value="WillSignLater"
+          class="input-select"
+          id="signLater"
+        />
+        <span>
+          I will sign the Service Agreement later (we will send you a link via
+          email)
+        </span>
+      </div>
+    </div>
+  </fieldset>
+  <input type="hidden" name="ValidationCode" />
+  <input type="hidden" name="LeadSource" />
+  <input type="hidden" name="AgentEmail" />
+  <input type="hidden" name="ISOName" />
+  <input type="hidden" name="ISOEmail" />
+
+  <div id="errors"></div>
+  <button type="submit" class="gform_button button">Sign Me Up!</button>
+</form>

@@ -196,6 +196,22 @@ form.addEventListener("submit", function(e) {
         // errorElement.innerText = messages.join(", ");
       } else {
         form.submit();
+        var div = document.createElement("div");
+        var h2 = document.createElement("h2");
+        var thankYou = document.createTextNode("Thank You");
+        var p = document.createElement("p");
+        var paragraph = document.createTextNode(
+          "Your form has been successfully submitted. You will receive an email shortly with the next steps on completing the contract."
+        );
+        var rootDiv = document.getElementById("rootForm");
+        p.appendChild(paragraph);
+        h2.appendChild(thankYou);
+        h2.style.cssText = "text-align: center;";
+        div.appendChild(h2);
+        div.appendChild(p);
+        div.style.cssText = "text-align: center;";
+        rootDiv.innerHTML = "";
+        rootDiv.appendChild(div);
       }
     })
     .catch(err => {
