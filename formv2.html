@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="./form.css" />
 <div id="rootForm">
   <form
     name="brownstone-form"
@@ -115,28 +114,24 @@
       </div>
 
       <div class="group flex-row flex-wrap">
-        <div class="one-third">
-          <div class="flex-row">
-            <label class="form-label"
-              >Employer Identification Number (EIN)</label
+        <div class="flex-row">
+          <label class="form-label">Employer Identification Number (EIN)</label>
+          <div class="tooltip dot">
+            ?<span class="tooltiptext"
+              >The Employer Identification Number is issued by the Internal
+              Revenue Service. This is also known as the Federal Tax ID number.
+              Enter with no dashes or spaces like 123456789</span
             >
-            <div class="tooltip dot">
-              ?<span class="tooltiptext"
-                >The Employer Identification Number is issued by the Internal
-                Revenue Service. This is also known as the Federal Tax ID
-                number. Enter with no dashes or spaces like 123456789</span
-              >
-            </div>
           </div>
-
-          <input
-            type="text"
-            name="EIN"
-            placeholder="123456789"
-            maxlength="9"
-            class="input-field"
-          />
         </div>
+
+        <input
+          type="text"
+          name="EIN"
+          placeholder="123456789"
+          maxlength="9"
+          class="input-field ein"
+        />
       </div>
 
       <div class="group flex-row flex-wrap moreMID">
@@ -151,9 +146,9 @@
         </select>
       </div>
 
-      <p id="infoClaim">
+      <label class="form-label">
         Current Payment Processor & Merchant ID
-      </p>
+      </label>
 
       <div class="group flex-row flex-wrap">
         <div class="one-fourth-bigger">
@@ -573,5 +568,3 @@
     <button type="submit" class="gform_button button">Sign Me Up!</button>
   </form>
 </div>
-
-<script src="form.js"></script>
