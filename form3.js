@@ -30,13 +30,11 @@ var form = document.getElementById("mainForm");
 var signatureField = document.getElementById("signature");
 var radios = form.ServiceAgreement;
 var agreeDiv = document.getElementById("agreeSection");
+// var agreeRadio = document.getElementById("readAndAgree");
+// var signLaterRadio = document.getElementById("signLater");
 var errorElement = document.getElementById("errors");
 var messages = [];
 var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-var refCode = document.getElementById("refCode");
-var refMsg = document.getElementById("refMsg");
-var ref1 = document.getElementById("30-1");
-var ref2 = document.getElementById("30-2");
 
 // function to verify there is a value for input fields
 function verifyValue(element) {
@@ -79,49 +77,8 @@ for (var i = 0; i < radios.length; i++) {
   });
 }
 
-refCode.addEventListener("blur", event => {
-  fetch(
-    `https://43k8h1qbx6.execute-api.us-west-1.amazonaws.com/default/BRG-referral-code-check?refcode=${refCode.value}`,
-    {
-      headers: {
-        "x-api-key": "gFZ52tAaHi9nr2diLWCwYi3qctC0x309lOdd7IY4"
-      }
-    }
-  )
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-
-      if (data.refcode === "" || data.refcode == null) {
-      } else {
-        if (data.percent == "not found") {
-          refMsg.innerHTML = "Referral code not valid";
-        } else {
-          refMsg.innerHTML = "Referral code applied";
-          ref1.innerHTML = data.percent;
-          ref2.innerHTML = data.percent;
-        }
-      }
-    })
-    .catch(err => {
-      console.log("there was an error");
-      console.log(err);
-    });
-});
-
 // handle form submission
 form.addEventListener("submit", function(e) {
-  e.preventDefault();
-  var fetchValue;
-
-  if (refCode.value == null || refCode.value == "") {
-    fetchValue = "null";
-  } else {
-    fetchValue = refCode.value;
-  }
-
-  console.log(fetchValue);
-
   // ensure the messages is cleared on each submit and remove error borders
   messages = [];
 
@@ -214,26 +171,6 @@ form.addEventListener("submit", function(e) {
       errorElement.appendChild(ul);
     });
     // errorElement.innerText = messages.join(", ");
-  } else {
-    form.submit();
-    var div = document.createElement("div");
-    var h2 = document.createElement("h2");
-    var thankYou = document.createTextNode("Thank You");
-    var p = document.createElement("p");
-    var paragraph = document.createTextNode(
-      "Your form has been successfully submitted. You will receive an email shortly with the next steps on completing the contract."
-    );
-    var rootDiv = document.getElementById("rootForm");
-    p.appendChild(paragraph);
-    p.classList.add("thankYouMessage");
-    h2.appendChild(thankYou);
-    h2.style.cssText = "text-align: center;font-size: 3rem;padding: 2rem";
-    h2.classList.add("thankYouHeader");
-    div.appendChild(h2);
-    div.appendChild(p);
-    div.style.cssText = "text-align: center;";
-    rootDiv.innerHTML = "";
-    rootDiv.appendChild(div);
   }
 });
 
@@ -241,7 +178,7 @@ var placeSearch, autocomplete;
 
 var componentForm = {
   // street_number: "short_name",
-  // route: "long_name",
+  // route: "long_name"
   // locality: "long_name",
   // administrative_area_level_1: "short_name",
   // country: "long_name",
@@ -328,6 +265,7 @@ function geolocate() {
     });
   }
 }
-console.log("loaded");
 
 google.maps.event.addDomListener(window, "load", initAutocomplete);
+
+console.log("loaded");
