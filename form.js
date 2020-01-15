@@ -37,6 +37,7 @@ var refCode = document.getElementById("refCode");
 var refMsg = document.getElementById("refMsg");
 var ref1 = document.getElementById("30-1");
 var ref2 = document.getElementById("30-2");
+var submitButton = document.getElementById("submitButton");
 
 // function to verify there is a value for input fields
 function verifyValue(element) {
@@ -110,7 +111,7 @@ refCode.addEventListener("blur", event => {
 });
 
 // handle form submission
-form.addEventListener("submit", function(e) {
+submitButton.addEventListener("click", function(e) {
   e.preventDefault();
   var fetchValue;
 
@@ -241,7 +242,7 @@ var placeSearch, autocomplete;
 
 var componentForm = {
   // street_number: "short_name",
-  // route: "long_name",
+  // route: "long_name"
   // locality: "long_name",
   // administrative_area_level_1: "short_name",
   // country: "long_name",
@@ -328,6 +329,7 @@ function geolocate() {
     });
   }
 }
-console.log("loaded");
 
 google.maps.event.addDomListener(window, "load", initAutocomplete);
+
+console.log("loaded");
