@@ -235,6 +235,9 @@ if (
         // errorElement.innerText = messages.join(", ");
       } else {
         fetch(e.target.action, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
           method: "POST",
           body: new URLSearchParams(new FormData(e.target)) // event.target is the form
         })
