@@ -234,9 +234,26 @@ if (
         });
         // errorElement.innerText = messages.join(", ");
       } else {
-        form.ajaxForm(function() {
-          alert("Thank you for your comment!");
-        });
+        var xhr;
+        if (window.XMLHttpRequest) {
+          xhr = new XMLHttpRequest();
+        }
+        // IE
+        else if (window.ActiveXObject) {
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open(
+          "POST",
+          "https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=6b268abf0c8fe5c13d93095db2556e2b?scope=creatorapi",
+          true
+        );
+        xhr.onload = function(event) {
+          console.log("sucess");
+          // raw response
+        };
+        // or onerror, onabort
+        var formData = new FormData(form);
+        xhr.send(formData);
 
         var div = document.createElement("div");
         var h2 = document.createElement("h2");
