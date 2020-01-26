@@ -234,7 +234,7 @@ if (
         });
         // errorElement.innerText = messages.join(", ");
       } else {
-        fetch(event.target.action, {
+        fetch(e.target.action, {
           method: "POST",
           body: new URLSearchParams(new FormData(e.target)) // event.target is the form
         })
