@@ -138,7 +138,7 @@ if (
     console.log("ref code fetch finished");
 
     // handle form submission
-    submitButton.addEventListener(listenType, function(e) {
+    form.addEventListener("submit", function(e) {
       e.preventDefault();
 
       // ensure the messages is cleared on each submit and remove error borders
@@ -234,15 +234,40 @@ if (
         });
         // errorElement.innerText = messages.join(", ");
       } else {
-        // form.submit();
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/your/url/name.php");
-        xhr.onload = function(event) {
-          console.log("success"); // raw response
-        };
-        // or onerror, onabort
-        var formData = new FormData(document.getElementById("mainForm"));
-        xhr.send(formData);
+        fetch(event.target.action, {
+          method: "POST",
+          body: new URLSearchParams(new FormData(e.target)) // event.target is the form
+        })
+          .then(resp => {
+            return resp.json(); // or resp.text() or whatever the server sends
+            var div = document.createElement("div");
+            var h2 = document.createElement("h2");
+            var thankYou = document.createTextNode("Thank You");
+            var p = document.createElement("p");
+            var paragraph = document.createTextNode(
+              "Your form has been successfully submitted. You will receive an email shortly with the next steps on completing the contract."
+            );
+            var rootDiv = document.getElementById("rootForm");
+            p.appendChild(paragraph);
+            p.classList.add("thankYouMessage");
+            h2.appendChild(thankYou);
+            h2.style.cssText =
+              "text-align: center;font-size: 3rem;padding: 2rem";
+            h2.classList.add("thankYouHeader");
+            div.appendChild(h2);
+            div.appendChild(p);
+            div.style.cssText = "text-align: center;";
+            rootDiv.innerHTML = "";
+            rootDiv.appendChild(div);
+          })
+          .then(body => {
+            // TODO handle body
+            console.log("made it");
+          })
+          .catch(error => {
+            // TODO handle error
+          });
+
         var div = document.createElement("div");
         var h2 = document.createElement("h2");
         var thankYou = document.createTextNode("Thank You");
