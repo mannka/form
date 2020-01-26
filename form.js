@@ -234,42 +234,15 @@ if (
         });
         // errorElement.innerText = messages.join(", ");
       } else {
-        fetch(e.target.action, {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          method: "POST",
-          body: new URLSearchParams(new FormData(e.target)) // event.target is the form
-        })
-          .then(resp => {
-            return resp.json(); // or resp.text() or whatever the server sends
-            var div = document.createElement("div");
-            var h2 = document.createElement("h2");
-            var thankYou = document.createTextNode("Thank You");
-            var p = document.createElement("p");
-            var paragraph = document.createTextNode(
-              "Your form has been successfully submitted. You will receive an email shortly with the next steps on completing the contract."
-            );
-            var rootDiv = document.getElementById("rootForm");
-            p.appendChild(paragraph);
-            p.classList.add("thankYouMessage");
-            h2.appendChild(thankYou);
-            h2.style.cssText =
-              "text-align: center;font-size: 3rem;padding: 2rem";
-            h2.classList.add("thankYouHeader");
-            div.appendChild(h2);
-            div.appendChild(p);
-            div.style.cssText = "text-align: center;";
-            rootDiv.innerHTML = "";
-            rootDiv.appendChild(div);
-          })
-          .then(body => {
-            // TODO handle body
-            console.log("made it");
-          })
-          .catch(error => {
-            // TODO handle error
-          });
+        var xhr = new XMLHttpRequest();
+        xhr.open(
+          "POST",
+          "https://creator.zoho.com/api/brg.admin/json/brownstone-recovery/form/API_Merchant_Direct_v2/record/add/authtoken=6b268abf0c8fe5c13d93095db2556e2b?scope=creatorapi"
+        );
+        xhr.onload = function(event) {};
+        // or onerror, onabort
+        var formData = new FormData(form);
+        xhr.send(formData);
 
         var div = document.createElement("div");
         var h2 = document.createElement("h2");
