@@ -138,7 +138,7 @@ if (
     console.log("ref code fetch finished");
 
     // handle form submission
-    form.addEventListener("submit", function(e) {
+    submitButton.addEventListener("click", function(e) {
       e.preventDefault();
 
       // ensure the messages is cleared on each submit and remove error borders
